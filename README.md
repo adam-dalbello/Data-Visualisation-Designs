@@ -100,7 +100,8 @@ gridExtra::grid.arrange(
                           ncol = 1
 )
 ```
-![Screenshot 2022-02-26 000824](https://user-images.githubusercontent.com/25012294/155819516-f0309b8f-06e3-4b93-aa2d-0148acf76708.png)
+![Screenshot 2022-02-26 124938](https://user-images.githubusercontent.com/25012294/155843970-f8bfa98b-671a-4acd-b581-343b4c30582f.png)
+
 
 
 
