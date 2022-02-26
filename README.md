@@ -3,7 +3,7 @@ Here are some data source files and some R programs that reads in the data, mani
 The source files were given to me by companies I was interviewing for. The software was used to respond to the take home assignments.
 
 
-## Example visualisations
+## Example Visualisations
 ### Example 1
 The cumulative mean session length metric prominently displays session lengths trending over time to what appears to be their true central tendencies.
 
