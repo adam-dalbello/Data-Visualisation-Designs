@@ -130,15 +130,14 @@ churn <- data %>%
                            ),
           cohort = factor(cohort, levels = c('M1', 'M2', 'M3', 'M4-12', 'M13+'))
           )
+```
 
+```r
 churn %>% 
   group_by(cohort, channel) %>% 
   summarise(day_30_churn_rate = mean(churn_class)) %>% 
   spread(cohort, day_30_churn_rate)
-```
 
-Output dataset
-```r
 #  A tibble: 7 x 6
 #   channel       M1    M2    M3 `M4-12` `M13+`
 #   <chr>      <dbl> <dbl> <dbl>   <dbl>  <dbl>
