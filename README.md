@@ -1,5 +1,5 @@
 # nlss
-Here are some data source files and some R programs that read in the data, manipulates the data, then outputs visualisations and statistics.
+Here are some data source files and some R programs that read in the data, manipulate the data, then output visualisations and statistics.
 The source files were given to me by companies I was interviewing for. The software was used to respond to the take home assignments.
 
 
