@@ -15,7 +15,7 @@ Proto_A consistently outperforms proto_B since early in the test.
 
 ### Example 2
 The consistent outperformance of proto_B by proto_A has been statistically significant at the 95% confidence level for much of the test.
-(Overlapping confidence intervals represent a p value > 0.05 and non overlapping intervals represent p values <= 0.05.) 
+(Overlapping confidence intervals represent p values > 0.05 and non overlapping intervals represent p values <= 0.05.) 
 Confidence intervals narrowing as the test matured and a persisting delta are signs that proto_A may be the true session length maximizing variant.
 
 ```
