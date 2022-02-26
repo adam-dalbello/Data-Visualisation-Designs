@@ -3,8 +3,8 @@ Here are some data source files and R programs that read in the data, manipulate
 The source files were given to me by companies I was interviewing for. The software to respond to the take home assignment sections of the interview processes.
 
 
-## Example Visualisations
-### Example 1
+## Example Outputs
+#### Example 1
 The cumulative mean session length metric prominently displays AB test variant session length estimates trending over time to what appears to be their true central tendencies.
 
 Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early in the test.
@@ -13,7 +13,7 @@ Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early
 
 
 
-### Example 2
+#### Example 2
 The consistent outperformance of proto_B by proto_A has been statistically significant at the 95% confidence level for much of the test.
 (Overlapping confidence intervals represent p values > 0.05 and non overlapping intervals represent p values <= 0.05.) 
 Confidence intervals narrowing as the test matured and a persisting delta are signs that proto_A may be the true session length maximizing variant.
@@ -54,7 +54,7 @@ data %>%
 
 
 
-### Example 3
+#### Example 3
 This shows retention and engagement estimates for different online marketing channels.
 
 ```
@@ -105,7 +105,7 @@ gridExtra::grid.arrange(
 
 
 
-### Example 4
+#### Example 4
 The output data set represents cohorted marketing channel churn rates (from 0 to 1). Specifically, a rate of users who did not make a transaction a 2nd day within the first 30.4375 (365.25/12) days following a 1st transaction. So, for instance, 74% (0.74) of users registered in M1 through the Affiliate channel did not make another transaction within the first 30.4375 days following their 1st transaction.
 
 ```
