@@ -3,6 +3,13 @@ Here are some data source files and R programs that read in the data, manipulate
 The source files were given to me by companies I was interviewing for. The software to respond to the take home assignment sections of the interview processes.
 
 
+### :hammer_and_wrench: Languages and Tools :
+<div>
+  <img src="https://github.com/devicons/devicon/blob/master/icons/r/r-original.svg" title="r" alt="r" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/rstudio/rstudio-original.svg" title="RStudio" alt="RStudio" width="40" height="40"/>&nbsp;
+</div>
+
+
 ## Example Outputs
 #### Example 1
 The cumulative mean session length metric prominently displays AB test variant session length estimates trending over time to what appears to be their true central tendencies.
