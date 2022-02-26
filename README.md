@@ -2,6 +2,7 @@
 Here are some data source files and R programs that read in the data, manipulate the data, then output visualisations and statistics.
 The source files were given to me by companies I was interviewing for. The software to respond to the take home assignment sections of the interview processes.
 
+_All trademarks and copyrights have been redacted for privacy_
 
 ### :hammer_and_wrench: Languages and Tools :
 <div>
