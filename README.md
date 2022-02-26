@@ -18,7 +18,7 @@ The consistent outperformance of proto_B by proto_A has been statistically signi
 (Overlapping confidence intervals represent p values > 0.05 and non overlapping intervals represent p values <= 0.05.) 
 Confidence intervals narrowing as the test matured and a persisting delta are signs that proto_A may be the true session length maximizing variant.
 
-```
+```r
 data %>% 
   mutate(date = as.Date(SessionStart)) %>% 
   arrange(Prototype, date) %>% 
@@ -57,7 +57,7 @@ data %>%
 #### Example 3
 This shows retention and engagement estimates for different online marketing channels.
 
-```
+```r
 graph_function <- function(channel_name) {
   data %>% 
     filter(channel == channel_name) %>% 
@@ -108,7 +108,7 @@ gridExtra::grid.arrange(
 #### Example 4
 The output data set represents cohorted marketing channel churn rates (from 0 to 1). Specifically, a rate of users who did not make a transaction a 2nd day within the first 30.4375 (365.25/12) days following a 1st transaction. So, for instance, 74% (0.74) of users registered in M1 through the Affiliate channel did not make another transaction within the first 30.4375 days following their 1st transaction.
 
-```
+```r
 churn <- data %>% 
   arrange(player_id, activity_date) %>% 
   group_by(player_id, channel) %>% 
@@ -138,7 +138,7 @@ churn %>%
 ```
 
 Output dataset
-```
+```r
 #  A tibble: 7 x 6
 #   channel       M1    M2    M3 `M4-12` `M13+`
 #   <chr>      <dbl> <dbl> <dbl>   <dbl>  <dbl>
