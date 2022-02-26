@@ -16,6 +16,7 @@ _All trademarks and copyrights have been redacted for privacy_
   <img src="https://github.com/tidyverse/ggplot2/raw/main/man/figures/logo.png" height="139" style="max-width: 100%;"/>&nbsp;
   <img src="https://github.com/tidyverse/tidyr/raw/main/man/figures/logo.png"  height="139" style="max-width: 100%;"/>&nbsp;
   <img src="https://github.com/sjmgarnier/viridis/raw/master/man/figures/logo.png" height="139" style="max-width: 100%;"/>&nbsp;
+  <img src="https://github.com/tidyverse/readr/raw/main/man/figures/logo.png" height="139" style="max-width: 100%;"/>&nbsp;
 </div>
 
 ## Example Outputs
