@@ -7,7 +7,7 @@ The source files were given to me by companies I was interviewing for. The softw
 ### Example 1
 The cumulative mean session length metric prominently displays AB test variant session length estimates trending over time to what appears to be their true central tendencies.
 
-Proto_A consistently outperforms proto_B since early in the test.
+Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early in the test.
 
 ![Screenshot 2022-02-25 235228](https://user-images.githubusercontent.com/25012294/155818266-467aeecf-c9ac-4627-a13f-cc809eb24d24.png)
 
@@ -55,7 +55,7 @@ data %>%
 
 
 ### Example 3
-This shows retention for different online marketing channels.
+This shows retention and engagement estimates for different online marketing channels.
 
 ```
 graph_function <- function(channel_name) {
@@ -105,7 +105,7 @@ gridExtra::grid.arrange(
 
 
 ### Example 4
-The data set output represents a churn percent for each cohort and marketing channel. Specifically, the percentage of users who did not make a transaction a 2nd day within the first 30.4375 (365.25/12) days following their 1st transaction day. So, for instance, 74% of users who registered in M1 through the Affiliate channel did not make another transaction within the first 30.4375 days following their 1st transaction date.
+The output data set represents a churn percent for cohorts and marketing channels. Specifically, a percentage of users who did not make a transaction a 2nd day within the first 30.4375 (365.25/12) days following a 1st transaction. So, for instance, 74% of users registered in M1 through the Affiliate channel did not make another transaction within the first 30.4375 days following their 1st transaction.
 
 ```
 churn <- data %>% 
