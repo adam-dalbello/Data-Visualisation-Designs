@@ -27,9 +27,10 @@ The cumulative mean session length metric prominently displays AB test variant s
 Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early in the test.
 
 ![Screenshot 2022-02-25 235228](https://user-images.githubusercontent.com/25012294/155818266-467aeecf-c9ac-4627-a13f-cc809eb24d24.png)
-
-
-
+<br>
+<br>
+<br>
+<br>
 #### Example 2
 The consistent outperformance of proto_B by proto_A has been statistically significant at the 95% confidence level for much of the test.
 (Overlapping confidence intervals represent p values > 0.05 and non overlapping intervals represent p values <= 0.05.) 
@@ -68,9 +69,10 @@ data %>%
     scale_color_viridis(option = 'D', discrete = TRUE, begin = 0.2, end = 0.8)
 ```
 ![Screenshot 2022-02-25 235535](https://user-images.githubusercontent.com/25012294/155818740-df1b6321-74a6-48b3-a3d7-e7a02cece2ce.png)
-
-
-
+<br>
+<br>
+<br>
+<br>
 #### Example 3
 This shows retention and engagement estimates for different online marketing channels.
 
@@ -118,10 +120,10 @@ gridExtra::grid.arrange(
 )
 ```
 ![Screenshot 2022-02-26 124938](https://user-images.githubusercontent.com/25012294/155843970-f8bfa98b-671a-4acd-b581-343b4c30582f.png)
-
-
-
-
+<br>
+<br>
+<br>
+<br>
 #### Example 4
 The output data set represents cohorted marketing channel churn rates (from 0 to 1). Specifically, a rate of users who did not make a transaction a 2nd day within the first 30.4375 (365.25/12) days following a 1st transaction. So, for instance, 74% (0.74) of users registered in M1 through the Affiliate channel did not make another transaction within the first 30.4375 days following their 1st transaction.
 
