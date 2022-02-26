@@ -1,11 +1,11 @@
 # nlss
-Here are some data source files and some R programs that read in the data, manipulate the data, then output visualisations and statistics.
-The source files were given to me by companies I was interviewing for. The software was used to respond to the take home assignments.
+Here are some data source files and R programs that read in the data, manipulate the data, then output visualisations and statistics.
+The source files were given to me by companies I was interviewing for. The software used to respond to the take home assignment sections of the interview processes.
 
 
 ## Example Visualisations
 ### Example 1
-The cumulative mean session length metric prominently displays session lengths trending over time to what appears to be their true central tendencies.
+The cumulative mean session length metric prominently displays AB test variant session length estimates trending over time to what appears to be their true central tendencies.
 
 Proto_A consistently outperforms proto_B since early in the test.
 
