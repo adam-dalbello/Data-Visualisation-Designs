@@ -4,12 +4,19 @@ The source files were given to me by companies I was interviewing for. The softw
 
 _All trademarks and copyrights have been redacted for privacy_
 
-### :hammer_and_wrench: Languages and Tools :
+### Languages and Tools:
 <div>
   <img src="https://github.com/devicons/devicon/blob/master/icons/r/r-original.svg" title="r" alt="r" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/rstudio/rstudio-original.svg" title="RStudio" alt="RStudio" width="40" height="40"/>&nbsp;
 </div>
 
+### Packages:
+<div>
+  <img src="https://github.com/tidyverse/dplyr/raw/main/man/figures/logo.png" height="139" style="max-width: 100%;"/>&nbsp;
+  <img src="https://github.com/tidyverse/ggplot2/raw/main/man/figures/logo.png" height="139" style="max-width: 100%;"/>&nbsp;
+  <img src="https://github.com/tidyverse/tidyr/raw/main/man/figures/logo.png"  height="139" style="max-width: 100%;"/>&nbsp;
+  <img src="https://github.com/sjmgarnier/viridis/raw/master/man/figures/logo.png" height="139" style="max-width: 100%;"/>&nbsp;
+</div>
 
 ## Example Outputs
 #### Example 1
