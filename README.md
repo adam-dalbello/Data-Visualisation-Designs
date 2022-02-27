@@ -23,7 +23,7 @@ The cumulative mean session length metric prominently displays AB test variant s
 
 Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early in the test.
 
-![Screenshot 2022-02-25 235228](https://user-images.githubusercontent.com/25012294/155818266-467aeecf-c9ac-4627-a13f-cc809eb24d24.png)
+![white cumulative mean session lengths](https://user-images.githubusercontent.com/25012294/155900699-1236ce95-fb6f-41a4-8d31-76b7d738cf17.png)
 <br>
 <br>
 ## Example 2
@@ -65,7 +65,7 @@ data %>%
 ```
 Geometry printout
 
-![Screenshot 2022-02-25 235535](https://user-images.githubusercontent.com/25012294/155818740-df1b6321-74a6-48b3-a3d7-e7a02cece2ce.png)
+![cumulative session length confidence intervals white](https://user-images.githubusercontent.com/25012294/155900758-190d57e7-82a2-4fe8-816f-2ed9c86eb7c3.png)
 <br>
 <br>
 ## Example 3
@@ -121,7 +121,6 @@ Geomtery printout
 <br>
 ## Example 4
 The output data set represents cohorted marketing channel churn rates (from 0 to 1). Specifically, a rate of users who did not make a transaction a 2nd day within the first 30.4375 (365.25/12) days following a 1st transaction. So, for instance, 74% (0.74) of users registered in M1 through the Affiliate channel did not make another transaction within the first 30.4375 days following their 1st transaction.
-
 ```r
 churn <- data %>% 
   arrange(player_id, activity_date) %>% 
@@ -166,7 +165,6 @@ churn %>%
 <br>
 
 ## Example 5
-
 Online marketing channel 12 month user lifetime values.
 
 First the data manipulation.
