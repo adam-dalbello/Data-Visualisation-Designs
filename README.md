@@ -1,6 +1,6 @@
 # nlss
 Source data files and R programs that read in the data, manipulate it, then output visualisations and statistics.
-The source files were given to me by companies I interviewed with. The R software to respond to the take home assignment sections of the interview processes.
+The source files contain toy data.
 
 _All trademarks and copyrights have been redacted for privacy_
 
