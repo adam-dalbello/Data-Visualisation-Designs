@@ -2,8 +2,6 @@
 Source data files and R programs that read in the data, manipulate it, then output visualisations and statistics.
 The source files contain toy data.
 
-_All trademarks and copyrights have been redacted for privacy_
-
 ### Languages and Tools:
 <div>
   <img src="https://github.com/devicons/devicon/blob/master/icons/r/r-original.svg" title="r" alt="r" width="40" height="40"/>&nbsp;
@@ -26,7 +24,6 @@ The cumulative mean session length metric prominently displays AB test variant s
 Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early in the test.
 
 ![Screenshot 2022-02-25 235228](https://user-images.githubusercontent.com/25012294/155818266-467aeecf-c9ac-4627-a13f-cc809eb24d24.png)
-<br>
 <br>
 <br>
 ## Example 2
@@ -66,8 +63,9 @@ data %>%
     ggtitle('Cumulative Mean Session Length:\n83.4% Confidence Intervals') +
     scale_color_viridis(option = 'D', discrete = TRUE, begin = 0.2, end = 0.8)
 ```
+Geometry printout
+
 ![Screenshot 2022-02-25 235535](https://user-images.githubusercontent.com/25012294/155818740-df1b6321-74a6-48b3-a3d7-e7a02cece2ce.png)
-<br>
 <br>
 <br>
 ## Example 3
@@ -116,8 +114,9 @@ gridExtra::grid.arrange(
                           ncol = 1
 )
 ```
+Geomtery printout
+
 ![Screenshot 2022-02-26 124938](https://user-images.githubusercontent.com/25012294/155843970-f8bfa98b-671a-4acd-b581-343b4c30582f.png)
-<br>
 <br>
 <br>
 ## Example 4
