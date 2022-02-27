@@ -116,7 +116,7 @@ gridExtra::grid.arrange(
 ```
 Geomtery printout
 
-![Screenshot 2022-02-26 124938](https://user-images.githubusercontent.com/25012294/155843970-f8bfa98b-671a-4acd-b581-343b4c30582f.png)
+![retention black graph](https://user-images.githubusercontent.com/25012294/155893445-4f5a4ab2-db09-4272-80e8-fc68a1aaf1ec.png)
 <br>
 <br>
 ## Example 4
@@ -162,3 +162,95 @@ churn %>%
 #> 6 Other      0.611 0.929 0.778   0.759  0.729
 #> 7 PPC        0.705 0.701 0.703   0.688  0.677
 ```
+<br>
+<br>
+
+## Example 5
+
+Online marketing channel 12 month user lifetime values.
+
+First the data manipulation.
+```r
+month_map <- data.frame(
+                          month = c(seq(1, 12, by = 1)),
+                          key = ''
+                          )
+
+player_map <- data.frame(
+                          player_id = data$player_id,
+                          channel = data$channel,
+                          key = ''
+                          ) %>% 
+  distinct()
+
+player_month_map <- inner_join(player_map, month_map, by = 'key')
+
+data2 <- data %>% 
+  mutate(
+          months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days"))/(365.25/12)) + 1,
+          key = ''
+          ) %>% 
+  filter(ftd_date < '2018-01-01') %>% 
+  group_by(player_id, months_since_ftd, channel) %>% 
+  summarise(total_deposits = sum(deposits)) %>% 
+  arrange(player_id)
+
+cumulative_12_month_channel_ltvs <- left_join(player_month_map, data2, by = c('month' = 'months_since_ftd', 'player_id', 'channel')) %>% 
+  group_by(player_id) %>% 
+  mutate(cumulative_deposits = cumsum(replace_na(total_deposits, 0))) %>% 
+  group_by(month, channel) %>% 
+  summarise(avgLTV = sum(cumulative_deposits) / n_distinct(player_id))
+```
+
+Then a visual that is optimized for readability, precision and comparison.
+```r
+cumulative_12_month_channel_ltvs %>% 
+  ggplot(aes(x = as.factor(month), y = avgLTV, col = channel, group = channel)) +
+    geom_line(size = 0.8) +
+    xlab('Month') +
+    ylab('Avg. LTV') +
+    labs(color = 'Channel') +
+    ggtitle('Cumulative Average LTV') +
+    theme_minimal() +
+    scale_y_continuous(limits = c(0, 125)) +
+    theme(panel.grid.major.y = element_line(color = "grey"))
+```
+Printout
+
+![white ltv graph](https://user-images.githubusercontent.com/25012294/155892628-45b6560d-3df8-463d-803b-e0a1b0c1fc88.png)
+
+
+Or in a way that leads your attention to something the most valuable.
+```r
+cumulative_12_month_channel_ltvs %>%
+  mutate(label = ifelse(month == 12, channel, NA)) %>% 
+  ggplot(aes(x = as.factor(month), y = avgLTV, col = avgLTV, group = channel)) +
+  viridis::scale_color_viridis(discrete = FALSE, direction = 1, option = 'magma') +
+  geom_line(size = 0.1) +
+  geom_text(aes(label = label), nudge_x = 1.5, hjust = 1, size = 3.5) +
+  xlab('Month') +
+  ylab('Avg. LTV') +
+  labs(color = 'LTV') +
+  ggtitle('Cumulative Average LTV') +
+  theme_minimal() +
+  scale_y_continuous(limits = c(0, 125)) +
+  theme(
+        panel.grid.major.y = element_line(color = "black"),
+        panel.grid.minor.y = element_line(color = 'black'),
+        panel.grid.minor.x = element_line(color = 'black'),
+        panel.grid.major.x = element_line(color = 'black'),
+        plot.background = element_rect(fill = "black"),
+        axis.text.y = element_blank(),
+        plot.title = element_text(size = 10, color = 'grey'),
+        legend.key.size = unit(.25, "cm"),
+        legend.key.width = unit(0.5, "cm"),
+        legend.title = element_text(size = 9, color = 'gray40'),
+        legend.text = element_text(size = 7, color = 'gray40'),
+        legend.position = 'left',
+        axis.title.x = element_text(color = 'gray40', size = 9)
+  )
+```
+Printout
+
+![black ltv graph](https://user-images.githubusercontent.com/25012294/155892498-b64d2be2-f927-4569-8451-db3fce039e26.png)
+
