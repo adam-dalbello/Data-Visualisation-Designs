@@ -162,7 +162,6 @@ churn %>%
 #> 7 PPC        0.705 0.701 0.703   0.688  0.677
 ```
 <br>
-<br>
 
 ## Example 5
 Online marketing channel 12 month user lifetime values.
