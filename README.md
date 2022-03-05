@@ -10,11 +10,11 @@ The source files contain toy data.
 
 ### Packages:
 <div>
-  <img src="https://github.com/tidyverse/dplyr/raw/main/man/figures/logo.png" height="139" style="max-width: 100%;"/>&nbsp;
-  <img src="https://github.com/tidyverse/ggplot2/raw/main/man/figures/logo.png" height="139" style="max-width: 100%;"/>&nbsp;
-  <img src="https://github.com/tidyverse/tidyr/raw/main/man/figures/logo.png"  height="139" style="max-width: 100%;"/>&nbsp;
-  <img src="https://github.com/sjmgarnier/viridis/raw/master/man/figures/logo.png" height="139" style="max-width: 100%;"/>&nbsp;
-  <img src="https://github.com/tidyverse/readr/raw/main/man/figures/logo.png" height="139" style="max-width: 100%;"/>&nbsp;
+  <img src="https://github.com/tidyverse/dplyr/raw/main/man/figures/logo.png" height="100" style="max-width: 100%;"/>&nbsp;
+  <img src="https://github.com/tidyverse/ggplot2/raw/main/man/figures/logo.png" height="100" style="max-width: 100%;"/>&nbsp;
+  <img src="https://github.com/tidyverse/tidyr/raw/main/man/figures/logo.png"  height="100" style="max-width: 100%;"/>&nbsp;
+  <img src="https://github.com/sjmgarnier/viridis/raw/master/man/figures/logo.png" height="100" style="max-width: 100%;"/>&nbsp;
+  <img src="https://github.com/tidyverse/readr/raw/main/man/figures/logo.png" height="100" style="max-width: 100%;"/>&nbsp;
 </div>
 
 # Example Outputs
