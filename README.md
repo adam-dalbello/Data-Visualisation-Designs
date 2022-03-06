@@ -161,6 +161,13 @@ churn %>%
 #> 6 Other      0.611 0.929 0.778   0.759  0.729
 #> 7 PPC        0.705 0.701 0.703   0.688  0.677
 ```
+
+The table above represents the percentage of users who did not deposit a 2nd day within the first 30.4375 days following their 1st transaction. So, for instance, 74% of users who registered in January 2017 (M1) through the Affiliate channel did not make another transaction within the first 30.4375 days following their first transaction.
+
+It is wise in this scenario to classify users as churned only if they have not deposited a 2nd day within their first 30.4375 days because it allows for fair cohort comparison. It lends to fairness because users’ probabilities of churning persists throughout the entirety of their lifetimes. For instance, users acquired in January 2017 can churn in any month from January 2017 to December 2018. Whereas users acquired in November 2018 only have 1 month to exhibit churning behavior.
+
+Not assessing churn based on whether or not a user transacted again within a 30.4375 day window would probably bias cohort churn rates. Causing difficulty in comparing cohorts.  As M1 cohorts would probably always have the highest churn rates. Based on the assumption that as users’ lifetimes increase, their probability of churning increases.
+
 <br>
 
 ## Example 5
