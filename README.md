@@ -167,9 +167,8 @@ The table above represents the percentage of users who did not deposit a 2nd day
 It is wise in this scenario to classify users as churned only if they have not deposited a 2nd day within their first 30.4375 days because it allows for fair cohort comparison. It lends to fairness because users’ probabilities of churning persists throughout the entirety of their lifetimes. For instance, users acquired in January 2017 can churn in any month from January 2017 to December 2018. Whereas users acquired in November 2018 only have 1 month to exhibit churning behavior.
 
 Not assessing churn based on whether or not a user transacted again within a 30.4375 day window would probably bias cohort churn rates. Causing difficulty in comparing cohorts.  As M1 cohorts would probably always have the highest churn rates. Based on the assumption that as users’ lifetimes increase, their probability of churning increases.
-
 <br>
-
+<br>
 ## Example 5
 Online marketing channel 12 month user lifetime values.
 
