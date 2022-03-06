@@ -216,7 +216,7 @@ Printout
 
 ![white ltv graph](https://user-images.githubusercontent.com/25012294/155892628-45b6560d-3df8-463d-803b-e0a1b0c1fc88.png)
 
-The graph above displays the cumulative LTV for each channel, for each month of users’ tenures, up to the 12th month of users’ tenures, for users with tenures of at least 12 months.  So when the x axis equals 12, the y axis represents the sum of deposits by all players during the first 12 months of their tenures, by players who have had a tenure of at least 12 months, divided by the number of distinct users who have had a tenure of at least 12 months.
+The graph above displays the cumulative LTV for marketing channels, for each month of users’ tenures, up to the 12th month of users’ tenures, for users with tenures of at least 12 months. So when the x axis equals 12, the y axis represents the sum of transactions by all users during the first 12 months of their tenures, by users who have had a tenure of at least 12 months, divided by the number of distinct users who have had a tenure of at least 12 months.
 
 
 In a way that leads your attention to something the most valuable.
