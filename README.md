@@ -60,7 +60,7 @@ data %>%
     ggthemes::theme_tufte() +
     xlab('Session Start Date') +
     ylab('Session Length (Min.)') +
-    ggtitle('Cumulative Mean Session Length:\n83.4% Confidence Intervals') +
+    ggtitle('Cumulative Mean Session Length: 83.4% Confidence Intervals') +
     scale_color_viridis(option = 'D', discrete = TRUE, begin = 0.2, end = 0.8)
 ```
 Geometry printout
