@@ -75,7 +75,7 @@ This shows retention and engagement estimates for different online marketing cha
 graph_function <- function(channel_name) {
   data %>% 
     filter(channel == channel_name) %>% 
-    mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days"))/(365.25/12))) %>% 
+    mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days")) / (365.25 / 12))) %>% 
     filter(
             ftd_date <= '2017-12-31',
             ftd_date != activity_date,
@@ -100,7 +100,7 @@ graph_function <- function(channel_name) {
             legend.title = element_text(size = 9, color = 'grey'),
             legend.text = element_text(size = 7, color = 'grey')
             ) +
-      viridis::scale_fill_viridis(option = 'A', discrete = FALSE, name = 'Deposit Frequency', labels = scales::comma)
+      viridis::scale_fill_viridis(option = 'A', discrete = FALSE, name = 'Transaction Frequency', labels = scales::comma)
 }
 
 gridExtra::grid.arrange(
