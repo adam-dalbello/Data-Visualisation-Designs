@@ -132,7 +132,7 @@ churn <- data %>%
           ) %>% 
   filter(lead_row_number %in% c(2, NA), row_number == 1) %>% 
   mutate(
-          months_delta = as.numeric(difftime(lead_activity_date, ftd_date, units = "days"))/(365.25/12),
+          months_delta = as.numeric(difftime(lead_activity_date, ftd_date, units = "days")) / (365.25 / 12),
           churn_class = if_else(months_delta > 1 | is.na(months_delta), 1, 0),
           cohort = if_else(as.yearmon(ftd_date) == 'Jan 2017', 'M1',
                            if_else(as.yearmon(ftd_date) == 'Feb 2017', 'M2',
