@@ -236,29 +236,29 @@ In a way that leads your attention to something the most valuable.
 cumulative_12_month_channel_ltvs %>%
   mutate(label = ifelse(month == 12, channel, NA)) %>% 
   ggplot(aes(x = as.factor(month), y = avgLTV, col = avgLTV, group = channel)) +
-  viridis::scale_color_viridis(discrete = FALSE, direction = 1, option = 'magma') +
-  geom_line(size = 0.1) +
-  geom_text(aes(label = label), nudge_x = 1.5, hjust = 1, size = 3.5) +
-  xlab('Month') +
-  ylab('Avg. LTV') +
-  labs(color = 'LTV') +
-  ggtitle('Cumulative Average LTV') +
-  theme_minimal() +
-  scale_y_continuous(limits = c(0, 125)) +
-  theme(
-        panel.grid.major.y = element_line(color = "black"),
-        panel.grid.minor.y = element_line(color = 'black'),
-        panel.grid.minor.x = element_line(color = 'black'),
-        panel.grid.major.x = element_line(color = 'black'),
-        plot.background = element_rect(fill = "black"),
-        axis.text.y = element_blank(),
-        plot.title = element_text(size = 10, color = 'grey'),
-        legend.key.size = unit(.25, "cm"),
-        legend.key.width = unit(0.5, "cm"),
-        legend.title = element_text(size = 9, color = 'gray40'),
-        legend.text = element_text(size = 7, color = 'gray40'),
-        legend.position = 'left',
-        axis.title.x = element_text(color = 'gray40', size = 9)
+    viridis::scale_color_viridis(discrete = FALSE, direction = 1, option = 'magma') +
+    geom_line(size = 0.1) +
+    geom_text(aes(label = label), nudge_x = 1.5, hjust = 1, size = 3.5) +
+    xlab('Month') +
+    ylab('Avg. LTV') +
+    labs(color = 'LTV') +
+    ggtitle('Cumulative Average LTV') +
+    theme_minimal() +
+    scale_y_continuous(limits = c(0, 125)) +
+    theme(
+          panel.grid.major.y = element_line(color = "black"),
+          panel.grid.minor.y = element_line(color = 'black'),
+          panel.grid.minor.x = element_line(color = 'black'),
+          panel.grid.major.x = element_line(color = 'black'),
+          plot.background = element_rect(fill = "black"),
+          axis.text.y = element_blank(),
+          plot.title = element_text(size = 10, color = 'grey'),
+          legend.key.size = unit(.25, "cm"),
+          legend.key.width = unit(0.5, "cm"),
+          legend.title = element_text(size = 9, color = 'gray40'),
+          legend.text = element_text(size = 7, color = 'gray40'),
+          legend.position = 'left',
+          axis.title.x = element_text(color = 'gray40', size = 9)
   )
 ```
 Printout
