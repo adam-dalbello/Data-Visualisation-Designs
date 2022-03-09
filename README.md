@@ -40,7 +40,7 @@ data %>%
           observations = 1,
           cumulative_avg_session_length = cummean(sessionLength),
           cumulative_obs = cumsum(observations)
-          ) %>% 
+         ) %>% 
   group_by(Prototype, date) %>% 
   mutate(
           cumulative_avg_session_length = last(cumulative_avg_session_length),
@@ -52,7 +52,7 @@ data %>%
              cumulative_session_length_ci_lower = max(cumulative_avg_session_length) - 1.39 * (sqrt(max(cumulative_session_length_squared_errors)/max(cumulative_obs)) / sqrt(max(cumulative_obs))),
              cumulative_avg_session_length = max(cumulative_avg_session_length),
              cumulative_session_length_ci_upper = max(cumulative_avg_session_length) + 1.39 * (sqrt(max(cumulative_session_length_squared_errors)/max(cumulative_obs)) / sqrt(max(cumulative_obs)))
-  ) %>% 
+         ) %>% 
   filter(date != '2018-07-21') %>% 
   ggplot(aes(x = date, y = cumulative_avg_session_length, group = Prototype, col = Prototype)) +
     geom_line(alpha = 0.5) +
