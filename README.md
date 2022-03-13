@@ -263,5 +263,7 @@ cumulative_12_month_channel_ltvs %>%
 ```
 Printout
 
-![black ltv graph](https://user-images.githubusercontent.com/25012294/155892498-b64d2be2-f927-4569-8451-db3fce039e26.png)
+![Rplot](https://user-images.githubusercontent.com/25012294/158074372-6d44dd81-442c-4583-8148-0c8f30c3d95a.png)
+
+
 
