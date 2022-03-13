@@ -97,7 +97,7 @@ graph_function <- function(channel_name) {
             plot.title = element_text(size = 9, color = 'grey'),
             legend.key.size = unit(.25, "cm"),
             legend.key.width = unit(0.5, "cm"),
-            legend.title = element_text( size = 9, color = 'grey'),
+            legend.title = element_text(size = 9, color = 'grey'),
             legend.text = element_text(size = 7, color = 'grey')
             ) +
       viridis::scale_fill_viridis(option = 'A', discrete = FALSE, name = 'Transaction Frequency', labels = scales::comma)
