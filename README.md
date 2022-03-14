@@ -234,7 +234,7 @@ The graph above displays the cumulative LTV for marketing channels, for each mon
 In a way that leads your attention to something the most valuable.
 ```r
 cumulative_12_month_channel_ltvs %>%
-  mutate(label = ifelse(month == 12, channel, NA)) %>% 
+  mutate(label = if_else(month == 12, channel, NA)) %>% 
   ggplot(aes(x = as.factor(month), y = avgLTV, col = avgLTV, group = channel)) +
     viridis::scale_color_viridis(discrete = FALSE, direction = 1, option = 'magma') +
     geom_line(size = 0.1) +
