@@ -264,7 +264,7 @@ cumulative_12_month_channel_ltvs %>%
           legend.text = element_text(size = 7, color = 'gray40'),
           legend.position = 'left',
           axis.title.x = element_text(color = 'gray40', size = 9)
-  )
+          )
 ```
 Printout
 
