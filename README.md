@@ -241,9 +241,18 @@ In a way that leads your attention to something the most valuable.
 cumulative_12_month_channel_ltvs %>%
   mutate(label = if_else(month == 12, channel, NA)) %>% 
   ggplot(aes(x = as.factor(month), y = avgLTV, col = avgLTV, group = channel)) +
-    viridis::scale_color_viridis(discrete = FALSE, direction = 1, option = 'magma') +
+    viridis::scale_color_viridis(
+                                  discrete = FALSE,
+                                  direction = 1,
+                                  option = 'magma'
+                                  ) +
     geom_line(size = 0.1) +
-    geom_text(aes(label = label), nudge_x = 2.5, hjust = 1, size = 3.5) +
+    geom_text(
+              aes(label = label),
+              nudge_x = 2.5,
+              hjust = 1,
+              size = 3.5
+              ) +
     xlab('Month') +
     ylab('Avg. LTV') +
     labs(color = 'LTV') +
