@@ -69,7 +69,7 @@ Geometry printout
 <br>
 <br>
 ## Example 3
-This shows retention and engagement estimates for different online marketing channels.
+This shows tranaction frequencies for different online marketing channels for each month of the first 12 months of users' lifetimes.
 
 ```r
 graph_function <- function(channel_name) {
@@ -126,6 +126,10 @@ gridExtra::grid.arrange(
 Geomtery printout
 
 ![retention black graph](https://user-images.githubusercontent.com/25012294/155893445-4f5a4ab2-db09-4272-80e8-fc68a1aaf1ec.png)
+
+This displays the retention rate for each marketing channel for the 1st 12 months of users who have had 12 month long lifetimes.
+
+
 <br>
 <br>
 ## Example 4
