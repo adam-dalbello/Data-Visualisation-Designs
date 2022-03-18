@@ -126,10 +126,6 @@ gridExtra::grid.arrange(
 Geomtery printout
 
 ![retention black graph](https://user-images.githubusercontent.com/25012294/155893445-4f5a4ab2-db09-4272-80e8-fc68a1aaf1ec.png)
-
-This displays the retention rate for each marketing channel for the 1st 12 months of users who have had 12 month long lifetimes.
-
-
 <br>
 <br>
 ## Example 4
