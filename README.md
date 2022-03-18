@@ -265,14 +265,14 @@ cumulative_12_month_channel_ltvs %>%
           panel.grid.minor.x = element_line(color = 'black'),
           panel.grid.major.x = element_line(color = 'black'),
           plot.background = element_rect(fill = "black"),
-          axis.text.y = element_blank(),
           plot.title = element_text(size = 10, color = 'grey'),
+          axis.text.y = element_blank(),
+          axis.title.x = element_text(color = 'gray40', size = 9),      
           legend.key.size = unit(.25, "cm"),
           legend.key.width = unit(0.5, "cm"),
           legend.title = element_text(size = 9, color = 'gray40'),
           legend.text = element_text(size = 7, color = 'gray40'),
-          legend.position = 'left',
-          axis.title.x = element_text(color = 'gray40', size = 9)
+          legend.position = 'left'
           )
 ```
 Printout
