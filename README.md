@@ -132,7 +132,7 @@ This shows the retention rate for each marketing channel.
 data %>% 
   group_by(channel) %>% 
   mutate(segment_size = n_distinct(player_id)) %>%
-  mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days"))/(365.25/12))) %>% 
+  mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days")) / (365.25 / 12))) %>% 
   filter(
          ftd_date <= '2017-12-31',
          ftd_date != activity_date,
