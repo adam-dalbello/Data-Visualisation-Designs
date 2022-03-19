@@ -2,13 +2,13 @@
 Source data files and R programs that read in the data, manipulate it, then output visualisations and statistics.
 The source files contain toy data.
 
-### Languages and Tools:
+### Languages and Tools
 <div>
   <img src="https://github.com/devicons/devicon/blob/master/icons/r/r-original.svg" title="r" alt="r" width="70" height="70"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/rstudio/rstudio-original.svg" title="RStudio" alt="RStudio" width="70" height="70"/>&nbsp;
 </div>
 
-### Packages:
+### Packages
 <div>
   <img src="https://github.com/tidyverse/dplyr/raw/main/man/figures/logo.png" height="100" style="max-width: 100%;"/>&nbsp;
   <img src="https://github.com/tidyverse/ggplot2/raw/main/man/figures/logo.png" height="100" style="max-width: 100%;"/>&nbsp;
@@ -16,6 +16,8 @@ The source files contain toy data.
   <img src="https://github.com/sjmgarnier/viridis/raw/master/man/figures/logo.png" height="100" style="max-width: 100%;"/>&nbsp;
   <img src="https://github.com/tidyverse/readr/raw/main/man/figures/logo.png" height="100" style="max-width: 100%;"/>&nbsp;
 </div>
+<br>
+<br>
 
 # Example Outputs
 ## Example 1
