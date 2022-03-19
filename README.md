@@ -19,7 +19,7 @@ The source files contain toy data.
 <br>
 <br>
 
-# Example Outputs
+# Outputs
 ## Example 1
 The cumulative mean session length metric prominently displays AB test variant session length estimates trending over time to what appears to be their true central tendencies.
 
