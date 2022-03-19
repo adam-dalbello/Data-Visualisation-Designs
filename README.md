@@ -328,5 +328,38 @@ Printout
 
 ![Rplot](https://user-images.githubusercontent.com/25012294/158074372-6d44dd81-442c-4583-8148-0c8f30c3d95a.png)
 
-
+Lifetime revenue per monthly cohort.
+```r
+data %>%
+  filter(activity_date >= ftd_date) %>% #remove transactions recorded occurring before first transactions
+  arrange(ftd_date, activity_date) %>% #arrange dates in order
+  mutate(yearmon_fd = as.yearmon(ftd_date)) %>% 
+  group_by(yearmon_fd, activity_date) %>%
+  summarise(total_daily_deposits = sum(deposits)) %>%
+  mutate(
+          life_time_revenue = cumsum(total_daily_deposits),
+          activity_date = if_else(yearmon_fd == as.yearmon(activity_date), as.Date(yearmon_fd + 0.1), as.Date(activity_date))
+          ) %>% 
+  ggplot(aes(x = activity_date, y = life_time_revenue, col = as.factor(yearmon_fd))) +
+    geom_line() +
+      ggtitle('Cumulative Lifetime Revenue') +
+      ylab('Revenue') +
+      xlab('Date') +
+      labs(col = 'First Transaction Month') +
+      scale_y_continuous(labels = scales::dollar_format(prefix = '£')) +
+      viridis::scale_color_viridis(option = 'viridis', discrete = TRUE) +
+      theme(
+            plot.background = element_rect(colour = 'black', fill = 'black'),
+            panel.grid = element_blank(),
+            panel.background = element_blank(),
+            axis.ticks.y = element_blank(),
+            axis.ticks.x = element_blank(),
+            axis.text.x = element_text(angle = 45),
+            legend.key = element_blank(),
+            legend.background = element_blank(),
+            plot.title = element_text(colour = 'gray20'),
+            legend.position = 'none'
+      )
+```
+![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/159137030-0aaf2657-f0b3-4574-ae3d-d9992e9e00f3.png)
 
