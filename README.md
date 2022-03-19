@@ -126,6 +126,54 @@ gridExtra::grid.arrange(
 Geomtery printout
 
 ![retention black graph](https://user-images.githubusercontent.com/25012294/155893445-4f5a4ab2-db09-4272-80e8-fc68a1aaf1ec.png)
+
+This shows the retention rate for each marketing channel.
+```r
+data %>% 
+  group_by(channel) %>% 
+  mutate(segment_size = n_distinct(player_id)) %>%
+  mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days"))/(365.25/12))) %>% 
+  filter(
+         ftd_date <= '2017-12-31',
+         ftd_date != activity_date,
+         months_since_ftd %in% seq(1, 12, by = 1)
+         ) %>% 
+  group_by(channel, months_since_ftd) %>% 
+  summarise(rate = n_distinct(player_id)/max(segment_size)) %>% 
+  ggplot(
+          aes(
+              y = as.factor(channel),
+              x = as.factor(months_since_ftd),
+              fill = rate
+              )
+          ) +
+    geom_tile() +
+    xlab('Months Since 1st Transaction') +
+    ylab('Channel') +
+    ggtitle('Retention Rate') +
+    viridis::scale_fill_viridis(
+                                option = 'inferno',
+                                discrete = FALSE,
+                                name = 'Rate',
+                                labels = scales::percent
+                                ) +
+    theme(
+          plot.background = element_rect(colour = 'black', fill = 'black'),
+          plot.title = element_text(colour = 'gray 40', size = 11),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.background = element_blank(),
+          legend.background = element_blank(),
+          legend.text = element_text(colour = 'gray40', size = 8),
+          legend.title = element_text(colour = 'gray40', size = 9),
+          legend.box.background = element_blank(),
+          legend.key.width = unit(0.5, 'cm'),
+          axis.title.x = element_text(colour = 'gray40', size = 9),
+          axis.text.y = element_text(colour = 'gray40', size = 9),
+          axis.ticks.y = element_blank()
+          )
+```
+![retention rate](https://user-images.githubusercontent.com/25012294/159117554-0eb91e6d-c082-4313-bacb-6c47829fb3da.png)
 <br>
 <br>
 ## Example 4
