@@ -149,7 +149,6 @@ data %>%
           ) +
     geom_tile() +
     xlab('Months Since 1st Transaction') +
-    ylab('Channel') +
     ggtitle('Retention Rate') +
     viridis::scale_fill_viridis(
                                 option = 'inferno',
