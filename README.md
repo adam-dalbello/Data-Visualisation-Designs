@@ -359,7 +359,7 @@ data %>%
             legend.background = element_blank(),
             plot.title = element_text(colour = 'gray20'),
             legend.position = 'none'
-      )
+            )
 ```
 ![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/159137030-0aaf2657-f0b3-4574-ae3d-d9992e9e00f3.png)
 
