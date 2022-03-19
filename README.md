@@ -235,9 +235,9 @@ Online marketing channel 12 month user lifetime values.
 First the data manipulation.
 ```r
 month_map <- data.frame(
-                          month = c(seq(1, 12, by = 1)),
-                          key = ''
-                          )
+                         month = c(seq(1, 12, by = 1)),
+                         key = ''
+                         )
 
 player_map <- data.frame(
                           player_id = data$player_id,
