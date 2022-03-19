@@ -331,8 +331,8 @@ Printout
 Lifetime revenue per monthly cohort.
 ```r
 data %>%
-  filter(activity_date >= ftd_date) %>% #remove transactions recorded occurring before first transactions
-  arrange(ftd_date, activity_date) %>% #arrange dates in order
+  filter(activity_date >= ftd_date) %>%
+  arrange(ftd_date, activity_date) %>%
   mutate(yearmon_fd = as.yearmon(ftd_date)) %>% 
   group_by(yearmon_fd, activity_date) %>%
   summarise(total_daily_deposits = sum(deposits)) %>%
