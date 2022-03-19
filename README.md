@@ -331,16 +331,26 @@ Printout
 Lifetime revenue per monthly cohort.
 ```r
 data %>%
-  filter(activity_date >= ftd_date) %>%
-  arrange(ftd_date, activity_date) %>%
+  filter(activity_date >= ftd_date) %>% #remove transactions recorded occurring before first transactions
+  arrange(ftd_date, activity_date) %>% #arrange dates in order
   mutate(yearmon_fd = as.yearmon(ftd_date)) %>% 
   group_by(yearmon_fd, activity_date) %>%
   summarise(total_daily_deposits = sum(deposits)) %>%
   mutate(
           life_time_revenue = cumsum(total_daily_deposits),
-          activity_date = if_else(yearmon_fd == as.yearmon(activity_date), as.Date(yearmon_fd + 0.1), as.Date(activity_date))
+          activity_date = if_else(
+                                  yearmon_fd == as.yearmon(activity_date),
+                                  as.Date(yearmon_fd + 0.1),
+                                  as.Date(activity_date)
+                                  )
           ) %>% 
-  ggplot(aes(x = activity_date, y = life_time_revenue, col = as.factor(yearmon_fd))) +
+  ggplot(
+          aes(
+              x = activity_date,
+              y = life_time_revenue,
+              col = as.factor(yearmon_fd)
+              )
+          ) +
     geom_line() +
       ggtitle('Cumulative Lifetime Revenue') +
       ylab('Revenue') +
@@ -355,11 +365,19 @@ data %>%
             axis.ticks.y = element_blank(),
             axis.ticks.x = element_blank(),
             axis.text.x = element_text(angle = 45),
+            axis.title.x = element_blank(),
             legend.key = element_blank(),
             legend.background = element_blank(),
-            plot.title = element_text(colour = 'gray20'),
+            plot.title = element_text(
+                                      colour = 'gray20',
+                                      size = 14,
+                                      vjust = -5
+                                      ),
             legend.position = 'none'
             )
+
 ```
-![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/159137030-0aaf2657-f0b3-4574-ae3d-d9992e9e00f3.png)
+![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/159141700-569279aa-c09d-4410-a425-f9204b5eb6ba.png)
+
+
 
