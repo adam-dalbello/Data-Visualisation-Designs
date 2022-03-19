@@ -331,8 +331,8 @@ Printout
 Lifetime revenue per monthly cohort.
 ```r
 data %>%
-  filter(activity_date >= ftd_date) %>% #remove transactions recorded occurring before first transactions
-  arrange(ftd_date, activity_date) %>% #arrange dates in order
+  filter(activity_date >= ftd_date) %>% 
+  arrange(ftd_date, activity_date) %>%
   mutate(yearmon_fd = as.yearmon(ftd_date)) %>% 
   group_by(yearmon_fd, activity_date) %>%
   summarise(total_daily_deposits = sum(deposits)) %>%
@@ -340,8 +340,8 @@ data %>%
           life_time_revenue = cumsum(total_daily_deposits),
           activity_date = if_else(
                                   yearmon_fd == as.yearmon(activity_date),
-                                  as.Date(yearmon_fd + 0.1),
-                                  as.Date(activity_date)
+                                                                          as.Date(yearmon_fd + 0.1),
+                                                                                                    as.Date(activity_date)
                                   )
           ) %>% 
   ggplot(
@@ -377,7 +377,7 @@ data %>%
             )
 
 ```
-![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/159141700-569279aa-c09d-4410-a425-f9204b5eb6ba.png)
+![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/159141810-92a91123-a0b7-478f-aba4-42f500c20bbb.png)
 
 
 
