@@ -139,7 +139,7 @@ data %>%
          months_since_ftd %in% seq(1, 12, by = 1)
          ) %>% 
   group_by(channel, months_since_ftd) %>% 
-  summarise(rate = n_distinct(player_id)/max(segment_size)) %>% 
+  summarise(rate = n_distinct(player_id) / max(segment_size)) %>% 
   ggplot(
           aes(
               y = as.factor(channel),
