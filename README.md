@@ -59,12 +59,12 @@ data %>%
   ggplot(aes(x = date, y = cumulative_avg_session_length, group = Prototype, col = Prototype)) +
     geom_line(alpha = 0.5) +
     geom_errorbar(
-                  aes(
-                      ymin = cumulative_session_length_ci_lower,
-                      ymax = cumulative_session_length_ci_upper
-                     ),
-                  width = 0.15
-                 ) +
+                   aes(
+                        ymin = cumulative_session_length_ci_lower,
+                        ymax = cumulative_session_length_ci_upper
+                      ),
+                   width = 0.15
+                  ) +
     ggthemes::theme_tufte() +
     xlab('Session Start Date') +
     ylab('Session Length (Min.)') +
@@ -102,7 +102,7 @@ graph_function <- function(channel_name) {
                 x = months_since_ftd,
                 fill = frequency
                )
-           ) +
+            ) +
       geom_tile() +
       scale_x_continuous(breaks = seq(0, 11, by = 1)) +
       theme_minimal() +
