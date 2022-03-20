@@ -384,9 +384,9 @@ data %>%
           ) %>% 
   ggplot(
           aes(
-              x = activity_date,
-              y = life_time_revenue,
-              col = as.factor(yearmon_fd)
+               x = activity_date,
+               y = life_time_revenue,
+               col = as.factor(yearmon_fd)
              )
         ) +
     geom_line() +
