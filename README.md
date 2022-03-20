@@ -303,7 +303,6 @@ cumulative_12_month_channel_ltvs %>%
               size = 3.5
               ) +
     xlab('Month') +
-    ylab('Avg. LTV') +
     labs(color = 'LTV') +
     ggtitle('Cumulative Average LTV') +
     theme_minimal() +
