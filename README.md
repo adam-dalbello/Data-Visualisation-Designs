@@ -353,9 +353,6 @@ data %>%
           ) +
     geom_line() +
       ggtitle('Cumulative Lifetime Revenue') +
-      ylab('Revenue') +
-      xlab('Date') +
-      labs(col = 'First Transaction Month') +
       scale_y_continuous(labels = scales::dollar_format(prefix = '£')) +
       viridis::scale_color_viridis(option = 'viridis', discrete = TRUE) +
       theme(
