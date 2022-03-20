@@ -58,7 +58,12 @@ data %>%
   filter(date != '2018-07-21') %>% 
   ggplot(aes(x = date, y = cumulative_avg_session_length, group = Prototype, col = Prototype)) +
     geom_line(alpha = 0.5) +
-    geom_errorbar(aes(ymin = cumulative_session_length_ci_lower, ymax = cumulative_session_length_ci_upper), width = 0.15) +
+    geom_errorbar(
+                  aes(
+                      ymin = cumulative_session_length_ci_lower,
+                      ymax = cumulative_session_length_ci_upper
+                      ),
+                  width = 0.15) +
     ggthemes::theme_tufte() +
     xlab('Session Start Date') +
     ylab('Session Length (Min.)') +
@@ -85,7 +90,13 @@ graph_function <- function(channel_name) {
             ) %>% 
     group_by(channel, months_since_ftd) %>% 
     summarise(frequency = n()) %>% 
-    ggplot(aes(y = as.factor(channel), x = months_since_ftd, fill = frequency)) +
+    ggplot(
+           aes(
+               y = as.factor(channel),
+               x = months_since_ftd,
+               fill = frequency
+               )
+           ) +
       geom_tile() +
       scale_x_continuous(breaks = seq(0, 11, by = 1)) +
       theme_minimal() +
@@ -246,11 +257,15 @@ player_map <- data.frame(
                           ) %>% 
   distinct()
 
-player_month_map <- inner_join(player_map, month_map, by = 'key')
+player_month_map <- inner_join(
+                               player_map,
+                               month_map,
+                               by = 'key'
+                               )
 
 data2 <- data %>% 
   mutate(
-          months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days"))/(365.25/12)) + 1,
+          months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days")) / (365.25 / 12)) + 1,
           key = ''
           ) %>% 
   filter(ftd_date < '2018-01-01') %>% 
@@ -258,7 +273,11 @@ data2 <- data %>%
   summarise(total_deposits = sum(deposits)) %>% 
   arrange(player_id)
 
-cumulative_12_month_channel_ltvs <- left_join(player_month_map, data2, by = c('month' = 'months_since_ftd', 'player_id', 'channel')) %>% 
+cumulative_12_month_channel_ltvs <- left_join(
+                                              player_month_map,
+                                              data2,
+                                              by = c('month' = 'months_since_ftd', 'player_id', 'channel')
+                                              ) %>% 
   group_by(player_id) %>% 
   mutate(cumulative_deposits = cumsum(replace_na(total_deposits, 0))) %>% 
   group_by(month, channel) %>% 
@@ -289,7 +308,14 @@ In a way that leads your attention to something the most valuable.
 ```r
 cumulative_12_month_channel_ltvs %>%
   mutate(label = if_else(month == 12, channel, NA)) %>% 
-  ggplot(aes(x = as.factor(month), y = avgLTV, col = avgLTV, group = channel)) +
+  ggplot(
+         aes(
+              x = as.factor(month),
+              y = avgLTV,
+              col = avgLTV,
+              group = channel
+             )
+          ) +
     viridis::scale_color_viridis(
                                   discrete = FALSE,
                                   direction = 1,
