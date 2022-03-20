@@ -360,19 +360,17 @@ data %>%
       viridis::scale_color_viridis(option = 'viridis', discrete = TRUE) +
       theme(
             plot.background = element_rect(colour = 'black', fill = 'black'),
+            plot.title = element_text(
+                                      colour = 'gray20',
+                                      size = 14,
+                                      vjust = -5
+                                      ),            
             panel.grid = element_blank(),
             panel.background = element_blank(),
             axis.ticks.y = element_blank(),
             axis.ticks.x = element_blank(),
             axis.text.x = element_text(angle = 45),
             axis.title.x = element_blank(),
-            legend.key = element_blank(),
-            legend.background = element_blank(),
-            plot.title = element_text(
-                                      colour = 'gray20',
-                                      size = 14,
-                                      vjust = -5
-                                      ),
             legend.position = 'none'
             )
 
