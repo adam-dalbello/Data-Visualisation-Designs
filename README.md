@@ -30,7 +30,7 @@ data %>%
       x = SessionStart,
       y = as.numeric(sessionLength),
       group = Prototype,
-      col = Prototype #
+      col = Prototype
     ) #
   ) +
   geom_point(size = .5) +
