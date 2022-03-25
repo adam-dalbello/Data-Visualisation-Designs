@@ -190,8 +190,8 @@ data %>%
   summarise(rate = n_distinct(player_id) / max(segment_size)) %>%
   ggplot(
     aes(
-      y = as.factor(channel),
-      x = as.factor(months_since_ftd),
+      as.factor(months_since_ftd),
+      as.factor(channel),      
       fill = rate
     )
   ) +
