@@ -34,47 +34,47 @@ The consistent outperformance of proto_B by proto_A has been statistically signi
 Confidence intervals narrowing as the test matured and a persisting delta are signs that proto_A may be the true session length maximizing variant.
 
 ```r
-data %>% 
-  mutate(date = as.Date(SessionStart)) %>% 
-  arrange(Prototype, date) %>% 
-  group_by(Prototype) %>% 
+data %>%
+  mutate(date = as.Date(SessionStart)) %>%
+  arrange(Prototype, date) %>%
+  group_by(Prototype) %>%
   mutate(
-          observations = 1,
-          cumulative_avg_session_length = cummean(sessionLength),
-          cumulative_obs = cumsum(observations)
-         ) %>% 
-  group_by(Prototype, date) %>% 
+    observations = 1,
+    cumulative_avg_session_length = cummean(sessionLength),
+    cumulative_obs = cumsum(observations)
+  ) %>%
+  group_by(Prototype, date) %>%
   mutate(
-          cumulative_avg_session_length = last(cumulative_avg_session_length),
-          cumulative_obs = max(cumulative_obs),
-          cumulative_session_length_squared_errors = cumsum(as.numeric(sessionLength - cumulative_avg_session_length)^2)
-         ) %>% 
+    cumulative_avg_session_length = last(cumulative_avg_session_length),
+    cumulative_obs = max(cumulative_obs),
+    cumulative_session_length_squared_errors = cumsum(as.numeric(sessionLength - cumulative_avg_session_length)^2)
+  ) %>%
   group_by(Prototype, date) %>%
   summarise(
-             cumulative_session_length_ci_lower = max(cumulative_avg_session_length) - 1.39 * (sqrt(max(cumulative_session_length_squared_errors)/max(cumulative_obs)) / sqrt(max(cumulative_obs))),
-             cumulative_avg_session_length = max(cumulative_avg_session_length),
-             cumulative_session_length_ci_upper = max(cumulative_avg_session_length) + 1.39 * (sqrt(max(cumulative_session_length_squared_errors)/max(cumulative_obs)) / sqrt(max(cumulative_obs)))
-         ) %>% 
-  filter(date != '2018-07-21') %>% 
+    cumulative_session_length_ci_lower = max(cumulative_avg_session_length) - 1.39 * (sqrt(max(cumulative_session_length_squared_errors) / max(cumulative_obs)) / sqrt(max(cumulative_obs))),
+    cumulative_avg_session_length = max(cumulative_avg_session_length),
+    cumulative_session_length_ci_upper = max(cumulative_avg_session_length) + 1.39 * (sqrt(max(cumulative_session_length_squared_errors) / max(cumulative_obs)) / sqrt(max(cumulative_obs)))
+  ) %>%
+  filter(date != "2018-07-21") %>%
   ggplot(aes(x = date, y = cumulative_avg_session_length, group = Prototype, col = Prototype)) +
-    geom_line(alpha = 0.5) +
-    geom_errorbar(
-                   aes(
-                        ymin = cumulative_session_length_ci_lower,
-                        ymax = cumulative_session_length_ci_upper
-                      ),
-                   width = 0.15
-                  ) +
-    ggthemes::theme_tufte() +
-    xlab('Session Start Date') +
-    ylab('Session Length (Min.)') +
-    ggtitle('Cumulative Mean Session Length: 83.4% Confidence Intervals') +
-    scale_color_viridis(
-                         option = 'D',
-                         discrete = TRUE,
-                         begin = 0.2,
-                         end = 0.8
-                        )
+  geom_line(alpha = 0.5) +
+  geom_errorbar(
+    aes(
+      ymin = cumulative_session_length_ci_lower,
+      ymax = cumulative_session_length_ci_upper
+    ),
+    width = 0.15
+  ) +
+  ggthemes::theme_tufte() +
+  xlab("Session Start Date") +
+  ylab("Session Length (Min.)") +
+  ggtitle("Cumulative Mean Session Length: 83.4% Confidence Intervals") +
+  scale_color_viridis(
+    option = "D",
+    discrete = TRUE,
+    begin = 0.2,
+    end = 0.8
+  )
 ```
 Geometry printout
 
