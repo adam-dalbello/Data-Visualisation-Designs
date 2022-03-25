@@ -239,7 +239,7 @@ churn <- data %>%
                              )
                      ),
     cohort = factor(cohort, levels = c('M1', 'M2', 'M3', 'M4-12', 'M13+'))
-    )
+  )
 
 churn %>% 
   group_by(cohort, channel) %>% 
