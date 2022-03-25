@@ -27,8 +27,8 @@ The cumulative mean session length metric prominently displays AB test variant s
 data %>%
   ggplot(
     aes(
-      x = SessionStart,
-      y = as.numeric(sessionLength),
+      SessionStart,
+      as.numeric(sessionLength),
       group = Prototype,
       col = Prototype
     ) #
@@ -80,7 +80,14 @@ data %>%
     cumulative_session_length_ci_upper = max(cumulative_avg_session_length) + 1.39 * (sqrt(max(cumulative_session_length_squared_errors) / max(cumulative_obs)) / sqrt(max(cumulative_obs)))
   ) %>%
   filter(date != "2018-07-21") %>%
-  ggplot(aes(x = date, y = cumulative_avg_session_length, group = Prototype, col = Prototype)) +
+  ggplot(
+    aes(
+      date,
+      cumulative_avg_session_length,
+      group = Prototype,
+      col = Prototype
+    )
+  ) +
   geom_line(alpha = 0.5) +
   geom_errorbar(
     aes(
@@ -122,8 +129,8 @@ graph_function <- function(channel_name) {
     summarise(frequency = n()) %>%
     ggplot(
       aes(
-        y = as.factor(channel),
-        x = months_since_ftd,
+        as.factor(channel),
+        months_since_ftd,
         fill = frequency
       )
     ) +
@@ -316,8 +323,8 @@ Then a visual that is optimized for readability, precision and comparison.
 cumulative_12_month_channel_ltvs %>%
   ggplot(
     aes(
-      x = as.factor(month),
-      y = avgLTV,
+      as.factor(month),
+      avgLTV,
       col = channel,
       group = channel
     )
@@ -342,7 +349,14 @@ In a way that leads your attention to something the most valuable.
 ```r
 cumulative_12_month_channel_ltvs %>%
   mutate(label = ifelse(month == 12, channel, NA)) %>%
-  ggplot(aes(x = as.factor(month), y = avgLTV, col = avgLTV, group = channel)) +
+  ggplot(
+    aes(
+      as.factor(month),
+      avgLTV,
+      col = avgLTV,
+      group = channel
+    )
+  ) +
   viridis::scale_color_viridis(
     discrete = FALSE,
     direction = 1,
@@ -399,8 +413,8 @@ data %>%
   ) %>% 
 ggplot(
   aes(
-    x = activity_date,
-    y = life_time_revenue,
+    activity_date,
+    life_time_revenue,
     col = as.factor(yearmon_fd)
   )
 ) +
