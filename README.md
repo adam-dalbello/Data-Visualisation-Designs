@@ -23,6 +23,30 @@ The source files contain toy data.
 ## Example 1
 The cumulative mean session length metric prominently displays AB test variant session length estimates trending over time to what appears to be their true central tendencies.
 
+```r
+data %>%
+  ggplot(
+    aes(
+      x = SessionStart,
+      y = as.numeric(sessionLength),
+      group = Prototype,
+      col = Prototype #
+    ) #
+  ) +
+  geom_point(size = .5) +
+  ggthemes::theme_tufte() +
+  xlab("Session Start Time") +
+  ylab("Session Length (Min.)") +
+  ggtitle("Session Length") +
+  scale_color_viridis(
+    option = "D",
+    discrete = TRUE,
+    begin = 0.2,
+    end = 0.8
+  ) +
+  scale_y_continuous(labels = scales::comma)
+```
+
 Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early in the test.
 
 ![white cumulative mean session lengths](https://user-images.githubusercontent.com/25012294/155900699-1236ce95-fb6f-41a4-8d31-76b7d738cf17.png)
@@ -86,61 +110,59 @@ This shows tranaction frequencies for different online marketing channels for ea
 
 ```r
 graph_function <- function(channel_name) {
-  data %>% 
-    filter(channel == channel_name) %>% 
-    mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days")) / (365.25 / 12))) %>% 
+  data %>%
+    filter(channel == channel_name) %>%
+    mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days")) / (365.25 / 12))) %>%
     filter(
-            ftd_date <= '2017-12-31',
-            ftd_date != activity_date,
-            months_since_ftd %in% seq(0, 11, by = 1) 
-           ) %>% 
-    group_by(channel, months_since_ftd) %>% 
-    summarise(frequency = n()) %>% 
+      ftd_date <= "2017-12-31",
+      ftd_date != activity_date,
+      months_since_ftd %in% seq(0, 11, by = 1)
+    ) %>%
+    group_by(channel, months_since_ftd) %>%
+    summarise(frequency = n()) %>%
     ggplot(
-           aes(
-                y = as.factor(channel),
-                x = months_since_ftd,
-                fill = frequency
-               )
-            ) +
-      geom_tile() +
-      scale_x_continuous(breaks = seq(0, 11, by = 1)) +
-      theme_minimal() +
-      ggtitle(channel_name) +
-      theme(
-            panel.grid.minor.x = element_line(color = 'black'),
-            panel.grid.major.y = element_line(color = 'black'),
-            panel.grid.major.x = element_line(color = 'black'),
-            plot.background = element_rect(fill = "black"),
-            axis.text.y = element_blank(),
-            plot.title = element_text(size = 9, color = 'grey'),
-            legend.key.size = unit(.25, "cm"),
-            legend.key.width = unit(0.5, "cm"),
-            legend.title = element_text(size = 9, color = 'grey'),
-            legend.text = element_text(size = 7, color = 'grey')
-            ) +
-      viridis::scale_fill_viridis(
-                                   option = 'A',
-                                   discrete = FALSE,
-                                   name = 'Transaction Frequency',
-                                   labels = scales::comma
-                                  )
+      aes(
+        y = as.factor(channel),
+        x = months_since_ftd,
+        fill = frequency
+      )
+    ) +
+    geom_tile() +
+    scale_x_continuous(breaks = seq(0, 11, by = 1)) +
+    theme_minimal() +
+    ggtitle(channel_name) +
+    theme(
+      panel.grid.minor.x = element_line(color = "black"),
+      panel.grid.major.y = element_line(color = "black"),
+      panel.grid.major.x = element_line(color = "black"),
+      plot.background = element_rect(fill = "black"),
+      axis.text.y = element_blank(),
+      plot.title = element_text(size = 9, color = "grey"),
+      legend.key.size = unit(.25, "cm"),
+      legend.key.width = unit(0.5, "cm"),
+      legend.title = element_text(size = 9, color = "grey"),
+      legend.text = element_text(size = 7, color = "grey")
+    ) +
+    viridis::scale_fill_viridis(
+      option = "A",
+      discrete = FALSE,
+      name = "Transaction Frequency",
+      labels = scales::comma
+    )
 }
 
-
-# Graph 4
 gridExtra::grid.arrange(
-                          graph_function('Affiliate'),
-                          graph_function('Cross Sell'),
-                          graph_function('Direct'),
-                          graph_function('Facebook'),
-                          graph_function('Incentive'),
-                          graph_function('Other'),
-                          graph_function('PPC') + 
-                            theme(axis.title.x = element_text(color = 'gray40', size = 9)) +
-                            xlab('Months Since 1st Transaction'),
-                          ncol = 1
-                        )
+  graph_function("Affiliate"),
+  graph_function("Cross Sell"),
+  graph_function("Direct"),
+  graph_function("Facebook"),
+  graph_function("Incentive"),
+  graph_function("Other"),
+  graph_function("PPC") +
+    theme(axis.title.x = element_text(color = "gray40", size = 9)) +
+    xlab("Months Since 1st Transaction"),
+  ncol = 1
+)
 ```
 Geomtery printout
 
@@ -148,48 +170,48 @@ Geomtery printout
 
 This shows the retention rate for each marketing channel.
 ```r
-data %>% 
-  group_by(channel) %>% 
+data %>%
+  group_by(channel) %>%
   mutate(segment_size = n_distinct(player_id)) %>%
-  mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days")) / (365.25 / 12))) %>% 
+  mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days")) / (365.25 / 12))) %>%
   filter(
-          ftd_date <= '2017-12-31',
-          ftd_date != activity_date,
-          months_since_ftd %in% seq(1, 12, by = 1)
-         ) %>% 
-  group_by(channel, months_since_ftd) %>% 
-  summarise(rate = n_distinct(player_id) / max(segment_size)) %>% 
+    ftd_date <= "2017-12-31",
+    ftd_date != activity_date,
+    months_since_ftd %in% seq(1, 12, by = 1)
+  ) %>%
+  group_by(channel, months_since_ftd) %>%
+  summarise(rate = n_distinct(player_id) / max(segment_size)) %>%
   ggplot(
-          aes(
-               y = as.factor(channel),
-               x = as.factor(months_since_ftd),
-               fill = rate
-              )
-          ) +
-    geom_tile() +
-    xlab('Months Since 1st Transaction') +
-    ggtitle('Retention Rate') +
-    viridis::scale_fill_viridis(
-                                 option = 'inferno',
-                                 discrete = FALSE,
-                                 name = 'Rate',
-                                 labels = scales::percent
-                                ) +
-    theme(
-           plot.background = element_rect(colour = 'black', fill = 'black'),
-           plot.title = element_text(colour = 'gray 40', size = 11),
-           panel.grid.major = element_blank(),
-           panel.grid.minor = element_blank(),
-           panel.background = element_blank(),
-           legend.background = element_blank(),
-           legend.text = element_text(colour = 'gray40', size = 8),
-           legend.title = element_text(colour = 'gray40', size = 9),
-           legend.box.background = element_blank(),
-           legend.key.width = unit(0.5, 'cm'),
-           axis.title.x = element_text(colour = 'gray40', size = 9),
-           axis.text.y = element_text(colour = 'gray40', size = 9),
-           axis.ticks.y = element_blank()
-          )
+    aes(
+      y = as.factor(channel),
+      x = as.factor(months_since_ftd),
+      fill = rate
+    )
+  ) +
+  geom_tile() +
+  xlab("Months Since 1st Transaction") +
+  ggtitle("Retention Rate") +
+  viridis::scale_fill_viridis(
+    option = "inferno",
+    discrete = FALSE,
+    name = "Rate",
+    labels = scales::percent
+  ) +
+  theme(
+    plot.background = element_rect(colour = "black", fill = "black"),
+    plot.title = element_text(colour = "gray 40", size = 11),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    legend.background = element_blank(),
+    legend.text = element_text(colour = "gray40", size = 8),
+    legend.title = element_text(colour = "gray40", size = 9),
+    legend.box.background = element_blank(),
+    legend.key.width = unit(0.5, "cm"),
+    axis.title.x = element_text(colour = "gray40", size = 9),
+    axis.text.y = element_text(colour = "gray40", size = 9),
+    axis.ticks.y = element_blank()
+  )
 ```
 ![retention rate](https://user-images.githubusercontent.com/25012294/159117554-0eb91e6d-c082-4313-bacb-6c47829fb3da.png)
 <br>
@@ -197,34 +219,33 @@ data %>%
 ## Example 4
 The output data set represents cohorted marketing channel churn rates (from 0 to 1). Specifically, a rate of users who did not make a transaction a 2nd day within the first 30.4375 (365.25/12; 0.25 accounting for leap years) days following a 1st transaction. So, for instance, 74% (0.74) of users registered in M1 through the Affiliate channel did not make another transaction within the first 30.4375 days following their 1st transaction.
 ```r
-churn <- data %>% 
-  arrange(player_id, activity_date) %>% 
-  group_by(player_id, channel) %>% 
+churn <- data %>%
+  arrange(player_id, activity_date) %>%
+  group_by(player_id, channel) %>%
   mutate(
-          row_number = row_number(),
-          lead_activity_date = lead(activity_date),
-          lead_row_number = lead(row_number)
-         ) %>% 
+    row_number = row_number(),
+    lead_activity_date = lead(activity_date),
+    lead_row_number = lead(row_number)
+  ) %>%
   filter(lead_row_number %in% c(2, NA), row_number == 1) %>% 
   mutate(
-          months_delta = as.numeric(difftime(lead_activity_date, ftd_date, units = "days")) / (365.25 / 12),
-          churn_class = if_else(months_delta > 1 | is.na(months_delta), 1, 0),
-          cohort = if_else(as.yearmon(ftd_date) == 'Jan 2017', 'M1',
-                           if_else(as.yearmon(ftd_date) == 'Feb 2017', 'M2',
-                                   if_else(as.yearmon(ftd_date) == 'Mar 2017', 'M3',
-                                           if_else(as.numeric(as.yearmon(ftd_date)) >= 2017.25 & as.numeric(as.yearmon(ftd_date)) <= 2017.917, 'M4-12', 'M13+')
-                                           )
-                                   )
-                           ),
-          cohort = factor(cohort, levels = c('M1', 'M2', 'M3', 'M4-12', 'M13+'))
-          )
-```
+    months_delta = as.numeric(difftime(lead_activity_date, ftd_date, units = "days")) / (365.25 / 12),
+    churn_class = if_else(months_delta > 1 | is.na(months_delta), 1, 0),
+    cohort = if_else(as.yearmon(ftd_date) == 'Jan 2017', 'M1',
+                     if_else(as.yearmon(ftd_date) == 'Feb 2017', 'M2',
+                             if_else(as.yearmon(ftd_date) == 'Mar 2017', 'M3',
+                                     if_else(as.numeric(as.yearmon(ftd_date)) >= 2017.25 & as.numeric(as.yearmon(ftd_date)) <= 2017.917, 'M4-12', 'M13+')
+                                     )
+                             )
+                     ),
+    cohort = factor(cohort, levels = c('M1', 'M2', 'M3', 'M4-12', 'M13+'))
+    )
 
-```r
 churn %>% 
   group_by(cohort, channel) %>% 
   summarise(day_30_churn_rate = mean(churn_class)) %>% 
   spread(cohort, day_30_churn_rate)
+  
 #> # A tibble: 7 x 6
 #>   channel       M1    M2    M3 `M4-12` `M13+`
 #>   <chr>      <dbl> <dbl> <dbl>   <dbl>  <dbl>
@@ -252,63 +273,63 @@ Online marketing channel 12 month user lifetime values.
 First the data manipulation.
 ```r
 month_map <- data.frame(
-                         month = c(seq(1, 12, by = 1)),
-                         key = ''
-                        )
+  month = c(seq(1, 12, by = 1)),
+  key = ""
+)
 
 player_map <- data.frame(
-                          player_id = data$player_id,
-                          channel = data$channel,
-                          key = ''
-                         ) %>% 
+  player_id = data$player_id,
+  channel = data$channel,
+  key = ""
+) %>%
   distinct()
 
 player_month_map <- inner_join(
-                                player_map,
-                                month_map,
-                                by = 'key'
-                               )
+  player_map,
+  month_map,
+  by = "key"
+)
 
-data2 <- data %>% 
+data2 <- data %>%
   mutate(
-          months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days")) / (365.25 / 12)) + 1,
-          key = ''
-         ) %>% 
-  filter(ftd_date < '2018-01-01') %>% 
-  group_by(player_id, months_since_ftd, channel) %>% 
-  summarise(total_deposits = sum(deposits)) %>% 
+    months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days")) / (365.25 / 12)) + 1,
+    key = ""
+  ) %>%
+  filter(ftd_date < "2018-01-01") %>%
+  group_by(player_id, months_since_ftd, channel) %>%
+  summarise(total_deposits = sum(deposits)) %>%
   arrange(player_id)
 
 cumulative_12_month_channel_ltvs <- left_join(
-                                               player_month_map,
-                                               data2,
-                                               by = c('month' = 'months_since_ftd', 'player_id', 'channel')
-                                              ) %>% 
-  group_by(player_id) %>% 
-  mutate(cumulative_deposits = cumsum(replace_na(total_deposits, 0))) %>% 
-  group_by(month, channel) %>% 
+  player_month_map,
+  data2,
+  by = c("month" = "months_since_ftd", "player_id", "channel")
+) %>%
+  group_by(player_id) %>%
+  mutate(cumulative_deposits = cumsum(replace_na(total_deposits, 0))) %>%
+  group_by(month, channel) %>%
   summarise(avgLTV = sum(cumulative_deposits) / n_distinct(player_id))
 ```
 
 Then a visual that is optimized for readability, precision and comparison.
 ```r
-cumulative_12_month_channel_ltvs %>% 
+cumulative_12_month_channel_ltvs %>%
   ggplot(
-          aes(
-               x = as.factor(month),
-               y = avgLTV,
-               col = channel,
-               group = channel
-              )
-          ) +
-    geom_line(size = 0.8) +
-    xlab('Month') +
-    ylab('Avg. LTV') +
-    labs(color = 'Channel') +
-    ggtitle('Cumulative Average LTV') +
-    theme_minimal() +
-    scale_y_continuous(limits = c(0, 125)) +
-    theme(panel.grid.major.y = element_line(color = "grey"))
+    aes(
+      x = as.factor(month),
+      y = avgLTV,
+      col = channel,
+      group = channel
+    )
+  ) +
+  geom_line(size = 0.8) +
+  xlab("Month") +
+  ylab("Avg. LTV") +
+  labs(color = "Channel") +
+  ggtitle("Cumulative Average LTV") +
+  theme_minimal() +
+  scale_y_continuous(limits = c(0, 125)) +
+  theme(panel.grid.major.y = element_line(color = "grey"))
 ```
 Printout
 
@@ -320,47 +341,41 @@ The graph above displays the cumulative LTV for marketing channels, for each mon
 In a way that leads your attention to something the most valuable.
 ```r
 cumulative_12_month_channel_ltvs %>%
-  mutate(label = if_else(month == 12, channel, NA)) %>% 
-  ggplot(
-         aes(
-              x = as.factor(month),
-              y = avgLTV,
-              col = avgLTV,
-              group = channel
-             )
-          ) +
-    viridis::scale_color_viridis(
-                                  discrete = FALSE,
-                                  direction = 1,
-                                  option = 'magma'
-                                 ) +
-    geom_line(size = 0.1) +
-    geom_text(
-               aes(label = label),
-               nudge_x = 2.5,
-               hjust = 1,
-               size = 3.5
-              ) +
-    xlab('Month') +
-    labs(color = 'LTV') +
-    ggtitle('Cumulative Average LTV') +
-    theme_minimal() +
-    scale_y_continuous(limits = c(0, 125)) +
-    theme(
-           panel.grid.major.y = element_line(color = "black"),
-           panel.grid.minor.y = element_line(color = 'black'),
-           panel.grid.minor.x = element_line(color = 'black'),
-           panel.grid.major.x = element_line(color = 'black'),
-           plot.background = element_rect(fill = "black"),
-           plot.title = element_text(size = 10, color = 'grey'),
-           axis.text.y = element_blank(),
-           axis.title.x = element_text(color = 'gray40', size = 9),      
-           legend.key.size = unit(.25, "cm"),
-           legend.key.width = unit(0.5, "cm"),
-           legend.title = element_text(size = 9, color = 'gray40'),
-           legend.text = element_text(size = 7, color = 'gray40'),
-           legend.position = 'left'
-          )
+  mutate(label = ifelse(month == 12, channel, NA)) %>%
+  ggplot(aes(x = as.factor(month), y = avgLTV, col = avgLTV, group = channel)) +
+  viridis::scale_color_viridis(
+    discrete = FALSE,
+    direction = 1,
+    option = "magma"
+  ) +
+  geom_line(size = 0.01) +
+  geom_text(
+    aes(label = label),
+    nudge_x = 2.5,
+    hjust = 1,
+    size = 3.5
+  ) +
+  xlab("Month") +
+  ylab("Avg. LTV") +
+  labs(color = "LTV") +
+  ggtitle("Cumulative Lifetime Value (LTV)") +
+  theme_minimal() +
+  scale_y_continuous(limits = c(0, 125)) +
+  theme(
+    panel.grid.major.y = element_line(color = "black"),
+    panel.grid.minor.y = element_line(color = "black"),
+    panel.grid.minor.x = element_line(color = "black"),
+    panel.grid.major.x = element_line(color = "black"),
+    plot.background = element_rect(fill = "black"),
+    plot.title = element_text(size = 10, color = "grey"),
+    axis.text.y = element_blank(),
+    axis.title.x = element_text(color = "gray40", size = 9),
+    legend.key.size = unit(.25, "cm"),
+    legend.key.width = unit(0.5, "cm"),
+    legend.title = element_text(size = 9, color = "gray40"),
+    legend.text = element_text(size = 7, color = "gray40"),
+    legend.position = "left"
+  )
 ```
 Printout
 
@@ -369,46 +384,46 @@ Printout
 Lifetime revenue per monthly cohort.
 ```r
 data %>%
-  filter(activity_date >= ftd_date) %>% 
+  filter(activity_date >= ftd_date) %>%
   arrange(ftd_date, activity_date) %>%
   mutate(yearmon_fd = as.yearmon(ftd_date)) %>% 
   group_by(yearmon_fd, activity_date) %>%
   summarise(total_daily_deposits = sum(deposits)) %>%
   mutate(
-          life_time_revenue = cumsum(total_daily_deposits),
-          activity_date = if_else(
-                                  yearmon_fd == as.yearmon(activity_date),
-                                                                          as.Date(yearmon_fd + 0.1),
-                                                                                                    as.Date(activity_date)
-                                  )
-          ) %>% 
-  ggplot(
-          aes(
-               x = activity_date,
-               y = life_time_revenue,
-               col = as.factor(yearmon_fd)
-             )
-        ) +
-    geom_line() +
-      ggtitle('Cumulative Lifetime Revenue') +
-      scale_y_continuous(labels = scales::dollar_format(prefix = '£')) +
-      viridis::scale_color_viridis(option = 'viridis', discrete = TRUE) +
-      theme(
-             plot.background = element_rect(colour = 'black', fill = 'black'),
-             plot.title = element_text(
-                                        colour = 'gray20',
-                                        size = 14,
-                                        vjust = -5
-                                       ),            
-             panel.grid = element_blank(),
-             panel.background = element_blank(),
-             axis.ticks.y = element_blank(),
-             axis.ticks.x = element_blank(),
-             axis.text.x = element_text(angle = 45),
-             axis.title.x = element_blank(),
-             legend.position = 'none'
-            )
-
+    life_time_revenue = cumsum(total_daily_deposits),
+    activity_date = if_else(
+                            yearmon_fd == as.yearmon(activity_date),
+                                                                    as.Date(yearmon_fd + 0.1),
+                                                                                              as.Date(activity_date)
+                            )
+    ) %>% 
+ggplot(
+  aes(
+    x = activity_date,
+    y = life_time_revenue,
+    col = as.factor(yearmon_fd)
+  )
+) +
+  geom_line() +
+  ggtitle("Cumulative Lifetime Revenue") +
+  scale_y_continuous(labels = scales::dollar_format(prefix = "£")) +
+  viridis::scale_color_viridis(option = "viridis", discrete = TRUE) +
+  theme_minimal() +
+  theme(
+    plot.background = element_rect(colour = "black", fill = "black"),
+    plot.title = element_text(
+      colour = "gray20",
+      size = 14,
+      vjust = -5
+    ),
+    panel.grid = element_blank(),
+    panel.background = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.text.x = element_text(angle = 45),
+    axis.title.x = element_blank(),
+    legend.position = "none"
+  )
 ```
 ![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/159141810-92a91123-a0b7-478f-aba4-42f500c20bbb.png)
 
