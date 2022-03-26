@@ -31,7 +31,7 @@ data %>%
       as.numeric(sessionLength),
       group = Prototype,
       col = Prototype
-    ) #
+    )
   ) +
   geom_point(size = .5) +
   ggthemes::theme_tufte() +
