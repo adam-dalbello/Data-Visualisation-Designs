@@ -262,7 +262,9 @@ churn %>%
 #> 6 Other      0.611 0.929 0.778   0.759  0.729
 #> 7 PPC        0.705 0.701 0.703   0.688  0.677
 ```
-<img src="https://user-images.githubusercontent.com/25012294/157022311-6f1e15cf-4fe7-4276-86cd-f34de528d0bf.png" height = "200" width = "max-width: 100%;"/>&nbsp;
+![churn rate table](https://user-images.githubusercontent.com/25012294/161052182-128710d3-b35d-453c-89f8-97e3aa71dcdf.png)
+
+
 
 
 The table above represents the percentage of users who did not deposit a 2nd day within the first 30.4375 days following their 1st transaction. So, for instance, 74% of users who registered in January 2017 (M1) through the Affiliate channel did not make another transaction within the first 30.4375 days following their first transaction.
