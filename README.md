@@ -4,8 +4,8 @@ The source files contain toy data.
 
 ### Languages and Tools
 <div>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/r/r-original.svg" title = "r" alt = "r" width = "70" height = "70"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/rstudio/rstudio-original.svg" title = "RStudio" alt = "RStudio" width = "70" height = "70"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/r/r-original.svg" title = "r" alt = "r" width = "60" height = "60"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/rstudio/rstudio-original.svg" title = "RStudio" alt = "RStudio" width = "60" height = "60"/>&nbsp;
 </div>
 
 ### Major Packages
@@ -247,11 +247,37 @@ churn <- data %>%
     cohort = factor(cohort, levels = c('M1', 'M2', 'M3', 'M4-12', 'M13+'))
   )
 
-churn %>% 
+churn_table <- churn %>% 
   group_by(cohort, channel) %>% 
   summarise(day_30_churn_rate = mean(churn_class)) %>% 
   spread(cohort, day_30_churn_rate)
   
+churn_table %>%   
+  gt(rowname_col = 'channel') %>% 
+  tab_header(title = '30 Day Churn Rates') %>% 
+  fmt_percent(columns = c('M1', 'M2', 'M3', 'M4-12', 'M13+')) %>% 
+  data_color(
+    columns = c('M1', 'M2', 'M3', 'M4-12', 'M13+'),
+    colors = scales::col_numeric(
+      palette = "Reds",
+      domain = c(
+        churn_table[, -1] %>% as.matrix() %>% min(),
+        churn_table[, -1] %>% as.matrix() %>% max()
+        )
+      )
+  ) %>% 
+  tab_spanner(
+    label = "Cohorts (2017 - 2018)",
+    columns = c('M1', 'M2', 'M3', 'M4-12', 'M13+')
+  ) %>% 
+  cols_width(everything() ~ px(120)) %>% 
+  cols_align(
+    align = "center",
+    columns = contains('M')
+  ) %>% 
+  tab_options(data_row.padding = px(1))
+
+print(churn_table)
 #> # A tibble: 7 x 6
 #>   channel       M1    M2    M3 `M4-12` `M13+`
 #>   <chr>      <dbl> <dbl> <dbl>   <dbl>  <dbl>
