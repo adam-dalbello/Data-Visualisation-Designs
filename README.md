@@ -35,16 +35,16 @@ data %>%
     )
   ) +
   geom_point(size = .5) +
-  ggthemes::theme_tufte() +
   xlab("Session Start Time") +
   ylab("Session Length (Min.)") +
   ggtitle("Session Length") +
-  scale_color_viridis(
+  viridis::scale_color_viridis(
     option = "D",
     discrete = TRUE,
-    begin = 0.2,
-    end = 0.8
+    begin = 0,
+    end = 0.6
   ) +
+  theme(panel.background = element_rect(fill = 'grey94')) +
   scale_y_continuous(labels = scales::comma)
 ```
 
