@@ -50,7 +50,7 @@ data %>%
 
 Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early in the test.
 
-![white cumulative mean session lengths](https://user-images.githubusercontent.com/25012294/155900699-1236ce95-fb6f-41a4-8d31-76b7d738cf17.png)
+![dotted cumulative session length](https://user-images.githubusercontent.com/25012294/161394608-1fc2ab3e-85e5-4aac-8332-c2b8faded0e4.png)
 <br>
 <br>
 ## Example 2
@@ -97,20 +97,20 @@ data %>%
     ),
     width = 0.15
   ) +
-  ggthemes::theme_tufte() +
   xlab("Session Start Date") +
   ylab("Session Length (Min.)") +
   ggtitle("Cumulative Mean Session Length: 83.4% Confidence Intervals") +
-  scale_color_viridis(
+  viridis::scale_color_viridis(
     option = "D",
     discrete = TRUE,
-    begin = 0.2,
-    end = 0.8
-  )
+    begin = 0,
+    end = 0.6
+  ) +
+  theme(panel.background = element_rect(fill = 'grey94'))
 ```
 Geometry printout
 
-![cumulative session length confidence intervals white](https://user-images.githubusercontent.com/25012294/155900758-190d57e7-82a2-4fe8-816f-2ed9c86eb7c3.png)
+![cumulative session length white](https://user-images.githubusercontent.com/25012294/161394633-8b943ccf-0c72-4305-8a1d-3d6d4b2e4717.png)
 <br>
 <br>
 ## Example 3
