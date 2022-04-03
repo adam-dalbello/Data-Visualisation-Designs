@@ -121,6 +121,7 @@ Geometry printout
 <br>
 ## Example 3
 This shows the retention rate for each marketing channel.
+
 ```r
 data %>%
   group_by(channel) %>%
