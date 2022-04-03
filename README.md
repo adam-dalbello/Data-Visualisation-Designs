@@ -277,11 +277,12 @@ ggplot(
   viridis::scale_color_viridis(option = "viridis", discrete = TRUE) +
   theme_minimal() +
   theme(
+    text = element_text(family = extrafont::fonts()[fonts() == 'Segoe UI']),
     plot.background = element_rect(colour = "black", fill = "black"),
     plot.title = element_text(
       colour = "gray20",
       size = 14,
-      vjust = -5
+      vjust = -2
     ),
     panel.grid = element_blank(),
     panel.background = element_blank(),
@@ -292,7 +293,7 @@ ggplot(
     legend.position = "none"
   )
 ```
-![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/159141810-92a91123-a0b7-478f-aba4-42f500c20bbb.png)
+
 
 
 
