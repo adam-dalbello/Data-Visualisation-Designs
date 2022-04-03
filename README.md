@@ -293,7 +293,4 @@ ggplot(
     legend.position = "none"
   )
 ```
-
-
-
-
+![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/161422741-91ffbc4e-0ee9-48db-bbbe-319c7e32514e.png)
