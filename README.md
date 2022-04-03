@@ -167,7 +167,7 @@ data %>%
     axis.ticks.y = element_blank()
   )
 ```
-![retention rate](https://user-images.githubusercontent.com/25012294/161424305-6f610684-3509-410a-a369-3e3ee684c620.png)
+![retention rate](https://user-images.githubusercontent.com/25012294/161424377-33442aae-0615-4699-bc87-984047773819.png)
 <br>
 <br>
 ## Example 4
