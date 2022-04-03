@@ -44,13 +44,16 @@ data %>%
     begin = 0,
     end = 0.6
   ) +
-  theme(panel.background = element_rect(fill = 'grey94')) +
+  theme(
+    panel.background = element_rect(fill = 'grey94'),
+    text = element_text(family = extrafont::fonts()[fonts() == 'Segoe UI'])
+  ) +
   scale_y_continuous(labels = scales::comma)
 ```
 
 Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early in the test.
 
-![dotted cumulative session length](https://user-images.githubusercontent.com/25012294/161394608-1fc2ab3e-85e5-4aac-8332-c2b8faded0e4.png)
+![dotted cumulative session length](https://user-images.githubusercontent.com/25012294/161422204-5823b6b3-7081-40d2-accf-e67432cc4681.png)
 <br>
 <br>
 ## Example 2
@@ -106,11 +109,14 @@ data %>%
     begin = 0,
     end = 0.6
   ) +
-  theme(panel.background = element_rect(fill = 'grey94'))
+  theme(
+    panel.background = element_rect(fill = 'grey94'),
+    text = element_text(family = extrafont::fonts()[fonts() == 'Segoe UI'])
+  )
 ```
 Geometry printout
 
-![cumulative session length white](https://user-images.githubusercontent.com/25012294/161394633-8b943ccf-0c72-4305-8a1d-3d6d4b2e4717.png)
+![cumulative session length white](https://user-images.githubusercontent.com/25012294/161422284-2d2519bc-5260-4083-a05e-bd4d3e419e7c.png)
 <br>
 <br>
 ## Example 3
