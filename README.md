@@ -189,10 +189,11 @@ churn <- data %>%
     cohort = if_else(as.yearmon(ftd_date) == 'Jan 2017', 'M1',
                      if_else(as.yearmon(ftd_date) == 'Feb 2017', 'M2',
                              if_else(as.yearmon(ftd_date) == 'Mar 2017', 'M3',
-                                     if_else(as.numeric(as.yearmon(ftd_date)) >= 2017.25 & as.numeric(as.yearmon(ftd_date)) <= 2017.917, 'M4-12', 'M13+')
+                                     if_else(as.numeric(as.yearmon(ftd_date)) >= 2017.25 & as.numeric(as.yearmon(ftd_date)) <= 2017.917, 'M4-12', 'M13+'
                                      )
                              )
-                     ),
+                     )
+             ),
     cohort = factor(cohort, levels = c('M1', 'M2', 'M3', 'M4-12', 'M13+'))
   )
 
