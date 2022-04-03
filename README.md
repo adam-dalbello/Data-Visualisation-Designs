@@ -120,68 +120,6 @@ Geometry printout
 <br>
 <br>
 ## Example 3
-This shows tranaction frequencies for different online marketing channels for each month of the first 12 months of users' lifetimes.
-
-```r
-graph_function <- function(channel_name) {
-  data %>%
-    filter(channel == channel_name) %>%
-    mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days")) / (365.25 / 12))) %>%
-    filter(
-      ftd_date <= "2017-12-31",
-      ftd_date != activity_date,
-      months_since_ftd %in% seq(0, 11, by = 1)
-    ) %>%
-    group_by(channel, months_since_ftd) %>%
-    summarise(frequency = n()) %>%
-    ggplot(
-      aes(
-        as.factor(channel),
-        months_since_ftd,
-        fill = frequency
-      )
-    ) +
-    geom_tile() +
-    scale_x_continuous(breaks = seq(0, 11, by = 1)) +
-    theme_minimal() +
-    ggtitle(channel_name) +
-    theme(
-      panel.grid.minor.x = element_line(color = "black"),
-      panel.grid.major.y = element_line(color = "black"),
-      panel.grid.major.x = element_line(color = "black"),
-      plot.background = element_rect(fill = "black"),
-      axis.text.y = element_blank(),
-      plot.title = element_text(size = 9, color = "grey"),
-      legend.key.size = unit(.25, "cm"),
-      legend.key.width = unit(0.5, "cm"),
-      legend.title = element_text(size = 9, color = "grey"),
-      legend.text = element_text(size = 7, color = "grey")
-    ) +
-    viridis::scale_fill_viridis(
-      option = "A",
-      discrete = FALSE,
-      name = "Transaction Frequency",
-      labels = scales::comma
-    )
-}
-
-gridExtra::grid.arrange(
-  graph_function("Affiliate"),
-  graph_function("Cross Sell"),
-  graph_function("Direct"),
-  graph_function("Facebook"),
-  graph_function("Incentive"),
-  graph_function("Other"),
-  graph_function("PPC") +
-    theme(axis.title.x = element_text(color = "gray40", size = 9)) +
-    xlab("Months Since 1st Transaction"),
-  ncol = 1
-)
-```
-Geomtery printout
-
-![retention black graph](https://user-images.githubusercontent.com/25012294/155893445-4f5a4ab2-db09-4272-80e8-fc68a1aaf1ec.png)
-
 This shows the retention rate for each marketing channel.
 ```r
 data %>%
