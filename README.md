@@ -264,7 +264,7 @@ data %>%
                             yearmon_fd == as.yearmon(activity_date),
                                                                     as.Date(yearmon_fd + 0.1),
                                                                                               as.Date(activity_date)
-                            )
+                     )
   ) %>% 
 ggplot(
   aes(
