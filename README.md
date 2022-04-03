@@ -46,7 +46,7 @@ data %>%
   ) +
   theme(
     panel.background = element_rect(fill = 'grey94'),
-    text = element_text(family = extrafont::fonts()[fonts() == 'Segoe UI'])
+    text = element_text(family = 'Segoe UI')
   ) +
   scale_y_continuous(labels = scales::comma)
 ```
@@ -111,7 +111,7 @@ data %>%
   ) +
   theme(
     panel.background = element_rect(fill = 'grey94'),
-    text = element_text(family = extrafont::fonts()[fonts() == 'Segoe UI'])
+    text = element_text(family = 'Segoe UI')
   )
 ```
 Geometry printout
@@ -151,6 +151,7 @@ data %>%
     labels = scales::percent
   ) +
   theme(
+    text = element_text(family = 'Segoe UI'),
     plot.background = element_rect(colour = "black", fill = "black"),
     plot.title = element_text(colour = "gray 40", size = 11),
     panel.grid.major = element_blank(),
@@ -277,7 +278,7 @@ ggplot(
   viridis::scale_color_viridis(option = "viridis", discrete = TRUE) +
   theme_minimal() +
   theme(
-    text = element_text(family = extrafont::fonts()[fonts() == 'Segoe UI']),
+    text = element_text(family = 'Segoe UI'),
     plot.background = element_rect(colour = "black", fill = "black"),
     plot.title = element_text(
       colour = "gray20",
