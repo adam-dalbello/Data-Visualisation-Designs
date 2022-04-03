@@ -171,6 +171,7 @@ data %>%
 <br>
 ## Example 4
 The output data set represents cohorted marketing channel churn rates (from 0 to 1). Specifically, a rate of users who did not make a transaction a 2nd day within the first 30.4375 (365.25/12; 0.25 accounting for leap years) days following a 1st transaction. So, for instance, 74% (0.74) of users registered in M1 through the Affiliate channel did not make another transaction within the first 30.4375 days following their 1st transaction.
+
 ```r
 churn <- data %>%
   arrange(player_id, activity_date) %>%
@@ -246,127 +247,8 @@ Not assessing churn based on whether or not a user transacted again within the f
 <br>
 <br>
 ## Example 5
-Online marketing channel 12 month user lifetime values.
-
-First the data manipulation.
-```r
-month_map <- data.frame(
-  month = c(seq(1, 12, by = 1)),
-  key = ""
-)
-
-player_map <- data.frame(
-  player_id = data$player_id,
-  channel = data$channel,
-  key = ""
-) %>%
-  distinct()
-
-player_month_map <- inner_join(
-  player_map,
-  month_map,
-  by = "key"
-)
-
-data2 <- data %>%
-  mutate(
-    months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days")) / (365.25 / 12)) + 1,
-    key = ""
-  ) %>%
-  filter(ftd_date < "2018-01-01") %>%
-  group_by(player_id, months_since_ftd, channel) %>%
-  summarise(total_deposits = sum(deposits)) %>%
-  arrange(player_id)
-
-cumulative_12_month_channel_ltvs <- left_join(
-  player_month_map,
-  data2,
-  by = c("month" = "months_since_ftd", "player_id", "channel")
-) %>%
-  group_by(player_id) %>%
-  mutate(cumulative_deposits = cumsum(replace_na(total_deposits, 0))) %>%
-  group_by(month, channel) %>%
-  summarise(avgLTV = sum(cumulative_deposits) / n_distinct(player_id))
-```
-
-Then a visual that is optimized for readability, precision and comparison.
-```r
-cumulative_12_month_channel_ltvs %>%
-  ggplot(
-    aes(
-      as.factor(month),
-      avgLTV,
-      col = channel,
-      group = channel
-    )
-  ) +
-  geom_line(size = 0.8) +
-  xlab("Month") +
-  ylab("Avg. LTV") +
-  labs(color = "Channel") +
-  ggtitle("Cumulative Average LTV") +
-  theme_minimal() +
-  scale_y_continuous(limits = c(0, 125)) +
-  theme(panel.grid.major.y = element_line(color = "grey"))
-```
-Printout
-
-![white ltv graph](https://user-images.githubusercontent.com/25012294/155892628-45b6560d-3df8-463d-803b-e0a1b0c1fc88.png)
-
-The graph above displays the cumulative LTV for marketing channels, for each month of users’ tenures, up to the 12th month of users’ tenures, for users with tenures of at least 12 months. So when the x axis equals 12, the y axis represents the sum of transactions by all users during the first 12 months of their tenures, by users who have had a tenure of at least 12 months, divided by the number of distinct users who have had a tenure of at least 12 months.
-
-
-In a way that leads your attention to something the most valuable.
-```r
-cumulative_12_month_channel_ltvs %>%
-  mutate(label = ifelse(month == 12, channel, NA)) %>%
-  ggplot(
-    aes(
-      as.factor(month),
-      avgLTV,
-      col = avgLTV,
-      group = channel
-    )
-  ) +
-  viridis::scale_color_viridis(
-    discrete = FALSE,
-    direction = 1,
-    option = "magma"
-  ) +
-  geom_line(size = 0.01) +
-  geom_text(
-    aes(label = label),
-    nudge_x = 2.5,
-    hjust = 1,
-    size = 3.5
-  ) +
-  xlab("Month") +
-  ylab("Avg. LTV") +
-  labs(color = "LTV") +
-  ggtitle("Cumulative Lifetime Value (LTV)") +
-  theme_minimal() +
-  scale_y_continuous(limits = c(0, 125)) +
-  theme(
-    panel.grid.major.y = element_line(color = "black"),
-    panel.grid.minor.y = element_line(color = "black"),
-    panel.grid.minor.x = element_line(color = "black"),
-    panel.grid.major.x = element_line(color = "black"),
-    plot.background = element_rect(fill = "black"),
-    plot.title = element_text(size = 10, color = "grey"),
-    axis.text.y = element_blank(),
-    axis.title.x = element_text(color = "gray40", size = 9),
-    legend.key.size = unit(.25, "cm"),
-    legend.key.width = unit(0.5, "cm"),
-    legend.title = element_text(size = 9, color = "gray40"),
-    legend.text = element_text(size = 7, color = "gray40"),
-    legend.position = "left"
-  )
-```
-Printout
-
-![Rplot](https://user-images.githubusercontent.com/25012294/158074372-6d44dd81-442c-4583-8148-0c8f30c3d95a.png)
-
 Lifetime revenue per monthly cohort.
+
 ```r
 data %>%
   filter(activity_date >= ftd_date) %>%
