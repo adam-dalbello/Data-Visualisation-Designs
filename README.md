@@ -205,20 +205,20 @@ churn_table <- churn %>%
 churn_table %>%   
   gt(rowname_col = 'channel') %>% 
   tab_header(title = '30 Day Churn Rates') %>% 
-  fmt_percent(columns = c('M1', 'M2', 'M3', 'M4-12', 'M13+')) %>% 
+  fmt_percent(columns = contains('M')) %>% 
   data_color(
-    columns = c('M1', 'M2', 'M3', 'M4-12', 'M13+'),
+    columns = contains('M'),
     colors = scales::col_numeric(
       palette = "Reds",
       domain = c(
-        churn_table[, -1] %>% as.matrix() %>% min(),
-        churn_table[, -1] %>% as.matrix() %>% max()
+        min(as.matrix(churn_table[ , -1])),
+        max(as.matrix(churn_table[ , -1]))
         )
       )
   ) %>% 
   tab_spanner(
     label = "Cohorts (2017 - 2018)",
-    columns = c('M1', 'M2', 'M3', 'M4-12', 'M13+')
+    columns = contains('M')
   ) %>% 
   cols_width(everything() ~ px(120)) %>% 
   cols_align(
