@@ -15,7 +15,8 @@ The source files contain toy data.
   <img src="https://github.com/tidyverse/dplyr/raw/main/man/figures/logo.png" height = "100" style = "max-width: 100%;"/>&nbsp;
   <img src="https://github.com/tidyverse/ggplot2/raw/main/man/figures/logo.png" height = "100" style = "max-width: 100%;"/>&nbsp;
   <img src="https://github.com/tidyverse/tidyr/raw/main/man/figures/logo.png"  height = "100" style = "max-width: 100%;"/>&nbsp;
-  <img src="https://github.com/rstudio/gt/raw/master/man/figures/logo.svg" height = 100 style = "max-width: 100%;"/>&nbsp;
+  <img src="https://github.com/rstudio/gt/raw/master/man/figures/logo.svg" height = "100" style = "max-width: 100%;"/>&nbsp;
+  <img src="https://raw.githubusercontent.com/tidyverse/tibble/main/man/figures/logo.png" height = "100" style = "max-width: 100%;"/>&nbsp; 
 </div>
 <br>
 <br>
