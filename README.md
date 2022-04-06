@@ -93,15 +93,22 @@ data %>%
       col = Prototype
     )
   ) +
+  geom_errorbar(
+    aes(
+      ymin = cumulative_session_length_ci_lower,
+      ymax = cumulative_session_length_ci_upper
+    ),
+    col = 'black',
+    alpha = 0.5,
+    width = 0.35
+  ) +
   geom_line(alpha = 0.2) +
-  geom_point(alpha = 0.2) +
   geom_linerange(
     aes(
       ymin = cumulative_session_length_ci_lower,
       ymax = cumulative_session_length_ci_upper
     ),
-    size = 5,
-    alpha = 0.5
+    size = 5
   ) +
   xlab("Session Start Date") +
   ylab("Session Length (Min.)") +
@@ -119,7 +126,7 @@ data %>%
 ```
 Geometry printout
 
-![cumulative session length white](https://user-images.githubusercontent.com/25012294/161718959-621c411b-0a3b-4960-b882-581473324e70.png)
+![cumulative session length white](https://user-images.githubusercontent.com/25012294/161945105-4be1b5a4-0d6c-4667-be8b-16a838ca43ea.png)
 <br>
 <br>
 ## Example 3
