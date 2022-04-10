@@ -275,19 +275,18 @@ data %>%
                                                                     as.Date(yearmon_fd + 0.1),
                                                                                               as.Date(activity_date)
                     )
-  ) %>% 
-ggplot(
-  aes(
-    activity_date,
-    life_time_revenue,
-    col = as.factor(yearmon_fd)
-  )
-) +
+    ) %>% 
+  ggplot(
+    aes(
+      activity_date,
+      life_time_revenue,
+      col = as.factor(yearmon_fd)
+    )
+  ) +
   geom_line() +
   ggtitle("Cumulative Lifetime Revenue") +
   scale_y_continuous(labels = scales::dollar_format(prefix = "£")) +
   viridis::scale_color_viridis(option = "viridis", discrete = TRUE) +
-  theme_minimal() +
   theme(
     text = element_text(family = 'Segoe UI'),
     plot.background = element_rect(colour = "black", fill = "black"),
