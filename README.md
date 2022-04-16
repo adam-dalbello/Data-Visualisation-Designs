@@ -129,11 +129,6 @@ data %>%
     text = element_text(family = 'Segoe UI')
   )
 ```
-<br>
-Geometry printout
-<br>
-<br>
-
 ![cumulative session length white](https://user-images.githubusercontent.com/25012294/161945105-4be1b5a4-0d6c-4667-be8b-16a838ca43ea.png)
 <br>
 <br>
@@ -189,6 +184,7 @@ data %>%
 ![retention rate](https://user-images.githubusercontent.com/25012294/161424377-33442aae-0615-4699-bc87-984047773819.png)
 <br>
 <br>
+
 ## Example 4
 The output data set represents cohorted marketing channel churn rates (from 0 to 1). Specifically, a rate of users who did not make a transaction a 2nd day within the first 30.4375 (365.25/12; 0.25 accounting for leap years) days following a 1st transaction. So, for instance, 74% (0.74) of users registered in M1 through the Affiliate channel did not make another transaction within the first 30.4375 days following their 1st transaction.
 
@@ -267,6 +263,7 @@ It is wise in this scenario to classify users as churned only if they have not d
 Not assessing churn based on whether or not a user transacted again within the first 30.4375 days would probably bias cohort churn rates. Causing difficulty in comparing cohorts.  As M1 cohorts would probably always have the highest churn rates. Based on the assumption that as users’ lifetimes increase, probability of churning increases.
 <br>
 <br>
+
 ## Example 5
 Lifetime revenue per monthly cohort.
 
