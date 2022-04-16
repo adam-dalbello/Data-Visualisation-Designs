@@ -22,6 +22,8 @@ The source files contain toy data.
 <br>
 
 # Outputs
+
+
 ## Example 1
 The cumulative mean session length metric prominently displays AB test variant session length estimates trending over time to what appears to be their true central tendencies.
 
@@ -51,12 +53,15 @@ data %>%
   ) +
   scale_y_continuous(labels = scales::comma)
 ```
-
+<br>
 Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early in the test.
+<br>
+<br>
 
 ![dotted cumulative session length](https://user-images.githubusercontent.com/25012294/161422204-5823b6b3-7081-40d2-accf-e67432cc4681.png)
 <br>
 <br>
+
 ## Example 2
 The consistent outperformance of proto_B by proto_A has been statistically significant at the 95% confidence level for much of the test.
 (Overlapping confidence intervals represent p values > 0.05 and non overlapping intervals represent p values <= 0.05.) 
@@ -124,11 +129,15 @@ data %>%
     text = element_text(family = 'Segoe UI')
   )
 ```
+<br>
 Geometry printout
+<br>
+<br>
 
 ![cumulative session length white](https://user-images.githubusercontent.com/25012294/161945105-4be1b5a4-0d6c-4667-be8b-16a838ca43ea.png)
 <br>
 <br>
+
 ## Example 3
 This shows the retention rate for each marketing channel.
 
