@@ -50,8 +50,7 @@ data %>%
   theme(
     panel.background = element_rect(fill = 'grey94'),
     text = element_text(family = 'Segoe UI')
-  ) +
-  scale_y_continuous(labels = scales::comma)
+  )
 ```
 <br>
 Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early in the test.
