@@ -298,11 +298,7 @@ data %>%
   theme(
     text = element_text(family = 'Segoe UI'),
     plot.background = element_rect(colour = "black", fill = "black"),
-    plot.title = element_text(
-      colour = "gray20",
-      size = 14,
-      vjust = -2
-    ),
+    plot.title = element_text(colour = "gray40"),
     panel.grid = element_blank(),
     panel.background = element_blank(),
     axis.ticks.y = element_blank(),
@@ -312,4 +308,4 @@ data %>%
     legend.position = "none"
   )
 ```
-![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/161422741-91ffbc4e-0ee9-48db-bbbe-319c7e32514e.png)
+![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/163692174-72085569-583c-4758-8d63-9a3e8aec03f9.png)
