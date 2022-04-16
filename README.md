@@ -29,10 +29,13 @@ The cumulative mean session length metric prominently displays AB test variant s
 
 ```r
 data %>%
+  arrange(SessionStart) %>%
+  group_by(Prototype) %>%
+  mutate(cumulative_avg_session_length_mins = cummean(sessionLength)) %>%
   ggplot(
     aes(
       SessionStart,
-      as.numeric(sessionLength),
+      cumulative_avg_session_length_mins,
       group = Prototype,
       col = Prototype
     )
@@ -40,7 +43,7 @@ data %>%
   geom_point(size = .5) +
   xlab("Session Start Time") +
   ylab("Session Length (Min.)") +
-  ggtitle("Session Length") +
+  ggtitle("Cumulative Mean Session Length") +
   viridis::scale_color_viridis(
     option = "D",
     discrete = TRUE,
