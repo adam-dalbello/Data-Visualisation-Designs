@@ -308,4 +308,5 @@ data %>%
     legend.position = "none"
   )
 ```
-![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/163692174-72085569-583c-4758-8d63-9a3e8aec03f9.png)
+![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/163694624-3bf0620e-4979-44b0-b09e-95758559802f.png)
+
