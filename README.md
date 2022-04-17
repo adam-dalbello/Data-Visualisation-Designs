@@ -23,7 +23,7 @@ Source files containing toy data. The aim to advance visualisations. So some cou
 <br>
 
 # Programs and Visualisations
-## Instance 1
+## Instance 1: Estimating Impact in AB Tests
 The cumulative mean session length metric prominently displays AB test variant session length estimates trending over time to what appear to be true central tendencies.
 
 ```r
@@ -63,7 +63,7 @@ Prototype A (proto_A) consistently outperforms Prototype B (proto_B).
 <br>
 <br>
 
-## Instance 2
+## Instance 2: Estimating the Presence of Randomness in AB tests
 Proto_A outperformance of proto_B has been statistically significant at 95% confidence for the majority of the test. (Overlapping confidence intervals represent statistical significance. Non overlapping intervals represent non statistically significant difference.) Narrowing confidence intervals and a persistent difference represent a high probability that proto_A maximizes session length.
 
 ```r
@@ -132,7 +132,7 @@ data %>%
 <br>
 <br>
 
-## Instance 3
+## Instance 3: Estimating Marketing Channel Retention
 This shows the retention rate for each marketing channel.
 
 ```r
@@ -184,7 +184,7 @@ data %>%
 <br>
 <br>
 
-## Instance 4
+## Instance 4: Estimating Marketing Channel Churn
 The intent of this example was to exercise with the gt package.
 
 The output data set represents cohorted marketing channel churn rates. Users who did not make a transaction a 2nd day within the first 30.4375 (365.25/12; 0.25 representing leap years) days after a 1st transaction.
@@ -282,7 +282,7 @@ Not assessing churn based on whether or not a user transacted again within the f
 <br>
 <br>
 
-## Instance 5
+## Instance 5: Abstracting Cohort Lifetime Revenue
 Lifetime revenue per monthly cohort.
 
 ```r
