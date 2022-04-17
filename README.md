@@ -24,7 +24,7 @@ The source files contain toy data.
 # Outputs
 
 
-## Example 1
+## Instance 1
 The cumulative mean session length metric prominently displays AB test variant session length estimates trending over time to what appears to be their true central tendencies.
 
 ```r
@@ -64,7 +64,7 @@ Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early
 <br>
 <br>
 
-## Example 2
+## Instance 2
 The consistent outperformance of proto_B by proto_A has been statistically significant at the 95% confidence level for much of the test.
 (Overlapping confidence intervals represent p values > 0.05 and non overlapping intervals represent p values <= 0.05.) 
 Confidence intervals narrowing as the test matured and a persisting delta are signs that proto_A may be the true session length maximizing variant.
@@ -135,7 +135,7 @@ data %>%
 <br>
 <br>
 
-## Example 3
+## Instance 3
 This shows the retention rate for each marketing channel.
 
 ```r
@@ -187,7 +187,7 @@ data %>%
 <br>
 <br>
 
-## Example 4
+## Instance 4
 The intent of this example was to exercise with the gt package.
 
 The output data set represents cohorted marketing channel churn rates (from 0 to 1). Specifically, a rate of users who did not make a transaction a 2nd day within the first 30.4375 (365.25/12; 0.25 accounting for leap years) days following a 1st transaction. So, for instance, 74% (0.74) of users registered in M1 through the Affiliate channel did not make another transaction within the first 30.4375 days following their 1st transaction.
@@ -268,7 +268,7 @@ Not assessing churn based on whether or not a user transacted again within the f
 <br>
 <br>
 
-## Example 5
+## Instance 5
 Lifetime revenue per monthly cohort.
 
 ```r
