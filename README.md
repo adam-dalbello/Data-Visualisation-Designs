@@ -218,30 +218,46 @@ churn_table <- churn %>%
   summarise(day_30_churn_rate = mean(churn_class)) %>% 
   spread(cohort, day_30_churn_rate)
   
-churn_table %>%   
-  gt(rowname_col = 'channel') %>% 
-  tab_header(title = '30 Day Churn Rates') %>% 
-  fmt_percent(columns = contains('M')) %>% 
-  data_color(
-    columns = contains('M'),
-    colors = scales::col_numeric(
-      palette = "Reds",
-      domain = c(
-        min(as.matrix(churn_table[ , -1])),
-        max(as.matrix(churn_table[ , -1]))
-        )
-      )
+churn_table %>% 
+  pivot_longer(
+    cols = starts_with('M'),
+    names_to = 'cohort',
+    values_to = 'churn_rate'
   ) %>% 
-  tab_spanner(
-    label = "Cohorts (2017 - 2018)",
-    columns = contains('M')
-  ) %>% 
-  cols_width(everything() ~ px(120)) %>% 
-  cols_align(
-    align = "center",
-    columns = contains('M')
-  ) %>% 
-  tab_options(data_row.padding = px(1))
+  mutate(cohort = factor(cohort, levels = c('M1', 'M2', 'M3', 'M4-12', 'M13+'))) %>% 
+  ggplot(
+    aes(
+      x = cohort,
+      y = channel,
+      fill = churn_rate
+    )
+  ) +
+  geom_tile() +
+  scale_fill_gradient(
+    low = 'white', 
+    high = 'darkred', 
+    name = 'Rate',
+    labels = scales::percent
+  ) +
+  ggtitle('30 Day Churn Rate') +
+  xlab('Cohort') +
+  theme(
+    text = element_text(family = 'Segoe UI'),
+    plot.background = element_blank(),
+    plot.title = element_text(size = 11),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    legend.background = element_blank(),
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 9),
+    legend.box.background = element_blank(),
+    legend.key.width = unit(0.5, "cm"),
+    axis.title.x = element_text(size = 9),
+    axis.text.y = element_text(size = 9),
+    axis.ticks.y = element_blank(),
+    axis.title.y = element_blank()
+  )
 
 print(churn_table)
 #> # A tibble: 7 x 6
@@ -255,7 +271,8 @@ print(churn_table)
 #> 6 Other      0.611 0.929 0.778   0.759  0.729
 #> 7 PPC        0.705 0.701 0.703   0.688  0.677
 ```
-![churn rate table](https://user-images.githubusercontent.com/25012294/161070552-182e86cc-a81f-4870-85ce-eb837df5d38d.png)
+![churn rate table](https://user-images.githubusercontent.com/25012294/163717397-5e2ae1ab-76d4-4839-8fec-0c72ffb51fab.png)
+
 
 For instance, 74% of users who registered in January 2017 (M1), through the Affiliate channel, did not make another transaction within the first 30.4375 days after their first transaction.
 
