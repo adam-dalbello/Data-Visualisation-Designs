@@ -293,18 +293,21 @@ data %>%
   ) +
   geom_line() +
   ggtitle("Cumulative Lifetime Revenue") +
+  xlab('Date') +
+  ylab('Revenue') +
   scale_y_continuous(labels = scales::dollar_format(prefix = "£")) +
   viridis::scale_color_viridis(option = "viridis", discrete = TRUE) +
   theme(
     text = element_text(family = 'Segoe UI'),
     plot.background = element_rect(colour = "black", fill = "black"),
-    plot.title = element_text(colour = "gray40"),
+    plot.title = element_text(color = "gray60"),
     panel.grid = element_blank(),
     panel.background = element_blank(),
     axis.ticks.y = element_blank(),
     axis.ticks.x = element_blank(),
-    axis.text.x = element_text(angle = 45),
+    axis.text.x = element_text(angle = 40),
     axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
     legend.position = "none"
   )
 ```
