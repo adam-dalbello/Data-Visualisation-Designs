@@ -1,6 +1,6 @@
 # nlss
 Source data and R programs. The programs read in the data, manipulate it, then output visualisations and statistics. 
-The source files contain toy data. The aim to advance visualisations. So some could be percceived as progressive or not practical. Some report ready.
+Source files containing toy data. The aim to advance visualisations. So some could be percceived as progressive or not practical. Some report ready.
 <br>
 <br>
 
