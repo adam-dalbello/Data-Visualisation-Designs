@@ -23,7 +23,7 @@ Source files containing toy data. The aim to advance visualisations. So some cou
 <br>
 
 # Programs and Visualisations
-## Instance 1: Estimating Impact in AB Tests
+## Instance 1: AB Test Impact Estimate
 The cumulative mean session length metric prominently displays AB test variant session length estimates trending over time to what appear to be true central tendencies.
 
 ```r
@@ -63,7 +63,7 @@ Prototype A (proto_A) consistently outperforms Prototype B (proto_B).
 <br>
 <br>
 
-## Instance 2: Estimating the Presence of Randomness in AB tests
+## Instance 2: Estimating the Presence of Randomness in AB Tests
 Proto_A outperformance of proto_B has been statistically significant at 95% confidence for the majority of the test. (Overlapping confidence intervals represent statistical significance. Non overlapping intervals represent non statistically significant difference.) Narrowing confidence intervals and a persistent difference represent a high probability that proto_A maximizes session length.
 
 ```r
