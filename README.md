@@ -54,7 +54,7 @@ data %>%
   )
 ```
 <br>
-Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early in the test.
+Prototype A (proto_A) consistently outperforms Prototype B (proto_B).
 <br>
 <br>
 
@@ -63,9 +63,9 @@ Prototype A (proto_A) consistently outperforms Prototype B (proto_B) since early
 <br>
 
 ## Instance 2
-The consistent outperformance of proto_B by proto_A has been statistically significant at the 95% confidence level for much of the test.
-(Overlapping confidence intervals represent p values > 0.05 and non overlapping intervals represent p values <= 0.05.) 
-Confidence intervals narrowing as the test matured and a persisting delta are signs that proto_A may be the true session length maximizing variant.
+Proto_A persistently outperforming proto_B has been statistically significant at the 95% confidence level for the majority of the test.
+(Overlapping confidence intervals represent p values > 0.05. Non overlapping intervals represent p values <= 0.05.) 
+Narrowing confidence intervals and a persistent difference represent a high probability that proto_A maximizes session length.
 
 ```r
 data %>%
@@ -188,7 +188,7 @@ data %>%
 ## Instance 4
 The intent of this example was to exercise with the gt package.
 
-The output data set represents cohorted marketing channel churn rates (from 0 to 1). Specifically, a rate of users who did not make a transaction a 2nd day within the first 30.4375 (365.25/12; 0.25 accounting for leap years) days following a 1st transaction. So, for instance, 74% (0.74) of users registered in M1 through the Affiliate channel did not make another transaction within the first 30.4375 days following their 1st transaction.
+The output data set represents cohorted marketing channel churn rates (from 0 to 1). Specifically, a rate of users who did not make a transaction a 2nd day within the first 30.4375 (365.25/12; 0.25 accounting for leap years) days following a 1st transaction. So, for instance, 74% of users registered in M1, through the Affiliate channel, did not make another transaction within the first 30.4375 days following their 1st transaction.
 
 ```r
 churn <- data %>%
