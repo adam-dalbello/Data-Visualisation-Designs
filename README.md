@@ -88,7 +88,7 @@ data %>%
     cumulative_avg_session_length = max(cumulative_avg_session_length),
     cumulative_session_length_ci_upper = max(cumulative_avg_session_length) + 1.39 * (sqrt(max(cumulative_session_length_squared_errors) / max(cumulative_obs)) / sqrt(max(cumulative_obs)))
   ) %>%
-  filter(date != "2018-07-21") %>%
+  filter(date != '2018-07-21') %>%
   ggplot(
     aes(
       date,
@@ -114,9 +114,9 @@ data %>%
     ),
     size = 5
   ) +
-  xlab("Session Start Date") +
-  ylab("Session Length (Min.)") +
-  ggtitle("Cumulative Mean Session Length: 83.4% Confidence Intervals") +
+  xlab('Session Start Date') +
+  ylab('Session Length (Min.)') +
+  ggtitle('Cumulative Mean Session Length: 83.4% Confidence Intervals') +
   viridis::scale_color_viridis(
     option = "D",
     discrete = TRUE,
@@ -139,9 +139,9 @@ This shows the retention rate for each marketing channel.
 data %>%
   group_by(channel) %>%
   mutate(segment_size = n_distinct(player_id)) %>%
-  mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days")) / (365.25 / 12))) %>%
+  mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = 'days')) / (365.25 / 12))) %>%
   filter(
-    ftd_date <= "2017-12-31",
+    ftd_date <= '2017-12-31',
     ftd_date != activity_date,
     months_since_ftd %in% seq(1, 12, by = 1)
   ) %>%
@@ -155,28 +155,28 @@ data %>%
     )
   ) +
   geom_tile() +
-  xlab("Months Since 1st Transaction") +
-  ggtitle("Retention Rate") +
+  xlab('Months Since 1st Transaction') +
+  ggtitle('Retention Rate') +
   viridis::scale_fill_viridis(
-    option = "inferno",
+    option = 'inferno',
     discrete = FALSE,
     name = "Rate",
     labels = scales::percent
   ) +
   theme(
     text = element_text(family = 'Segoe UI'),
-    plot.background = element_rect(colour = "black", fill = "black"),
-    plot.title = element_text(colour = "gray 40", size = 11),
+    plot.background = element_rect(colour = 'black', fill = 'black'),
+    plot.title = element_text(colour = 'gray40', size = 11),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
     panel.background = element_blank(),
     legend.background = element_blank(),
-    legend.text = element_text(colour = "gray40", size = 8),
-    legend.title = element_text(colour = "gray40", size = 9),
+    legend.text = element_text(colour = 'gray40', size = 8),
+    legend.title = element_text(colour = 'gray40', size = 9),
     legend.box.background = element_blank(),
-    legend.key.width = unit(0.5, "cm"),
-    axis.title.x = element_text(colour = "gray40", size = 9),
-    axis.text.y = element_text(colour = "gray40", size = 9),
+    legend.key.width = unit(0.5, 'cm'),
+    axis.title.x = element_text(colour = 'gray40', size = 9),
+    axis.text.y = element_text(colour = 'gray40', size = 9),
     axis.ticks.y = element_blank()
   )
 ```
@@ -200,7 +200,7 @@ churn <- data %>%
   ) %>%
   filter(lead_row_number %in% c(2, NA), row_number == 1) %>% 
   mutate(
-    months_delta = as.numeric(difftime(lead_activity_date, ftd_date, units = "days")) / (365.25 / 12),
+    months_delta = as.numeric(difftime(lead_activity_date, ftd_date, units = 'days')) / (365.25 / 12),
     churn_class = if_else(months_delta > 1 | is.na(months_delta), 1, 0),
     cohort = if_else(as.yearmon(ftd_date) == 'Jan 2017', 'M1',
                      if_else(as.yearmon(ftd_date) == 'Feb 2017', 'M2',
@@ -308,15 +308,15 @@ data %>%
     )
   ) +
   geom_line() +
-  ggtitle("Cumulative Lifetime Revenue") +
+  ggtitle('Cumulative Lifetime Revenue') +
   xlab('Date') +
   ylab('Revenue') +
-  scale_y_continuous(labels = scales::dollar_format(prefix = "£")) +
-  viridis::scale_color_viridis(option = "viridis", discrete = TRUE) +
+  scale_y_continuous(labels = scales::dollar_format(prefix = '£')) +
+  viridis::scale_color_viridis(option = 'viridis', discrete = TRUE) +
   theme(
     text = element_text(family = 'Segoe UI'),
-    plot.background = element_rect(colour = "black", fill = "black"),
-    plot.title = element_text(color = "gray60"),
+    plot.background = element_rect(colour = 'black', fill = 'black'),
+    plot.title = element_text(color = 'gray60'),
     panel.grid = element_blank(),
     panel.background = element_blank(),
     axis.ticks.y = element_blank(),
@@ -324,7 +324,7 @@ data %>%
     axis.text.x = element_text(angle = 40),
     axis.title.x = element_blank(),
     axis.title.y = element_blank(),
-    legend.position = "none"
+    legend.position = 'none'
   )
 ```
 ![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/163694624-3bf0620e-4979-44b0-b09e-95758559802f.png)
