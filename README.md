@@ -160,7 +160,7 @@ data %>%
   viridis::scale_fill_viridis(
     option = 'inferno',
     discrete = FALSE,
-    name = "Rate",
+    name = 'Rate',
     labels = scales::percent
   ) +
   theme(
