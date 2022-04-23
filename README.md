@@ -252,7 +252,7 @@ churn_table %>%
     legend.text = element_text(size = 8),
     legend.title = element_text(size = 9),
     legend.box.background = element_blank(),
-    legend.key.width = unit(0.5, "cm"),
+    legend.key.width = unit(0.5, 'cm'),
     axis.title.x = element_text(size = 9),
     axis.text.y = element_text(size = 9),
     axis.ticks.y = element_blank(),
