@@ -40,11 +40,11 @@ data %>%
     )
   ) +
   geom_point(size = .5) +
-  xlab("Session Start Time") +
-  ylab("Session Length (Min.)") +
-  ggtitle("Cumulative Mean Session Length") +
+  xlab('Session Start Time') +
+  ylab('Session Length (Min.)') +
+  ggtitle('Cumulative Mean Session Length') +
   viridis::scale_color_viridis(
-    option = "D",
+    option = 'D',
     discrete = TRUE,
     begin = 0,
     end = 0.6
