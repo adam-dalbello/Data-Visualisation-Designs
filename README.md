@@ -143,7 +143,7 @@ data %>%
 ```
 <br>
 
-![cumulative session length white](https://user-images.githubusercontent.com/25012294/176929500-dac0c6ce-b08c-4ff2-9390-00c856555835.png)
+![cumulative confidence intervals white](https://user-images.githubusercontent.com/25012294/176929639-18d6acec-e127-4204-89b3-cc1d04b2f0b3.png)
 <br>
 <br>
 
