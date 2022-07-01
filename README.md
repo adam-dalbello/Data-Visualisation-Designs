@@ -141,6 +141,7 @@ data %>%
     legend.text = element_text(size = 9)
   )
 ```
+<br>
 ![cumulative confidence intervals white](https://user-images.githubusercontent.com/25012294/176927847-4b8966bb-fe8b-4f7b-b679-2326ac685790.png)
 <br>
 <br>
@@ -152,9 +153,9 @@ This shows the retention rate for each marketing channel.
 data %>%
   group_by(channel) %>%
   mutate(segment_size = n_distinct(player_id)) %>%
-  mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = 'days')) / (365.25 / 12))) %>%
+  mutate(months_since_ftd = floor(as.numeric(difftime(activity_date, ftd_date, units = "days")) / (365.25 / 12))) %>%
   filter(
-    ftd_date <= '2017-12-31',
+    ftd_date <= "2017-12-31",
     ftd_date != activity_date,
     months_since_ftd %in% seq(1, 12, by = 1)
   ) %>%
@@ -163,37 +164,39 @@ data %>%
   ggplot(
     aes(
       as.factor(months_since_ftd),
-      as.factor(channel),      
+      as.factor(channel),
       fill = rate
     )
   ) +
   geom_tile() +
-  xlab('Months Since 1st Transaction') +
-  ggtitle('Retention Rate') +
+  xlab("Months Since 1st Transaction") +
+  ggtitle("Retention Rate") +
   viridis::scale_fill_viridis(
-    option = 'inferno',
+    option = "inferno",
     discrete = FALSE,
-    name = 'Rate',
+    name = "Rate",
     labels = scales::percent
   ) +
   theme(
     text = element_text(family = 'Segoe UI'),
-    plot.background = element_rect(colour = 'black', fill = 'black'),
-    plot.title = element_text(colour = 'gray40', size = 11),
+    plot.background = element_rect(colour = "black", fill = "black"),
+    plot.title = element_text(colour = "gray 40", size = 9),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
     panel.background = element_blank(),
     legend.background = element_blank(),
-    legend.text = element_text(colour = 'gray40', size = 8),
-    legend.title = element_text(colour = 'gray40', size = 9),
+    legend.text = element_text(colour = "gray40", size = 8),
+    legend.title = element_text(colour = "gray40", size = 9),
     legend.box.background = element_blank(),
-    legend.key.width = unit(0.5, 'cm'),
-    axis.title.x = element_text(colour = 'gray40', size = 9),
-    axis.text.y = element_text(colour = 'gray40', size = 9),
+    legend.key.width = unit(2, "mm"),
+    axis.title.x = element_text(colour = "gray40", size = 9),
+    axis.text.y = element_text(colour = "gray40", size = 8),
+    axis.text.x = element_text(colour = 'gray40', size = 8),
     axis.ticks.y = element_blank()
   )
 ```
-![retention rate](https://user-images.githubusercontent.com/25012294/161424377-33442aae-0615-4699-bc87-984047773819.png)
+<br>
+![retention rate](https://user-images.githubusercontent.com/25012294/176928347-94822bbb-ae70-4c4f-958a-4193982445b1.png)
 <br>
 <br>
 
@@ -223,24 +226,27 @@ data %>%
     )
   ) +
   geom_line() +
-  ggtitle('Cumulative Lifetime Revenue') +
+  ggtitle("Cumulative Lifetime Revenue") +
   xlab('Date') +
   ylab('Revenue') +
-  scale_y_continuous(labels = scales::dollar_format(prefix = '£')) +
-  viridis::scale_color_viridis(option = 'viridis', discrete = TRUE) +
+  scale_y_continuous(labels = scales::dollar_format(prefix = "£")) +
+  viridis::scale_color_viridis(option = "viridis", discrete = TRUE) +
   theme(
     text = element_text(family = 'Segoe UI'),
-    plot.background = element_rect(colour = 'black', fill = 'black'),
-    plot.title = element_text(color = 'gray60'),
+    plot.background = element_rect(colour = "black", fill = "black"),
+    plot.title = element_text(color = "gray40", size = 9),
     panel.grid = element_blank(),
     panel.background = element_blank(),
     axis.ticks.y = element_blank(),
     axis.ticks.x = element_blank(),
-    axis.text.x = element_text(angle = 40),
+    axis.text.x = element_text(angle = 40, size = 8),
+    axis.text.y = element_text(size = 8),
     axis.title.x = element_blank(),
     axis.title.y = element_blank(),
-    legend.position = 'none'
+    legend.position = "none"
+  )
   )
 ```
-![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/163694624-3bf0620e-4979-44b0-b09e-95758559802f.png)
+<br>
+![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/176928486-28daa8e0-124d-4f1f-a8cd-8c6559007c1c.png)
 
