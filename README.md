@@ -39,18 +39,25 @@ data %>%
     )
   ) +
   geom_point(size = .5) +
-  xlab('Session Start Time') +
-  ylab('Session Length (Min.)') +
-  ggtitle('Cumulative Mean Session Length') +
+  xlab("Session Start Time") +
+  ylab("Session Length (Min.)") +
+  ggtitle("Cumulative Mean Session Length") +
   viridis::scale_color_viridis(
-    option = 'D',
+    option = "D",
     discrete = TRUE,
     begin = 0,
     end = 0.6
   ) +
   theme(
-    panel.background = element_rect(fill = 'grey94'),
-    text = element_text(family = 'Segoe UI')
+    panel.background = element_rect(fill = 'grey97'),
+    text = element_text(family = 'Segoe UI'),
+    plot.title = element_text(size = 9),
+    axis.title.x = element_text(size = 9),
+    axis.title.y = element_text(size = 9),
+    axis.text.x = element_text(size = 8),
+    axis.text.y = element_text(size = 8),
+    legend.title = element_text(size = 9),
+    legend.text = element_text(size = 9)
   )
 ```
 <br>
@@ -58,7 +65,7 @@ Prototype A (proto_A) consistently outperforms Prototype B (proto_B).
 <br>
 <br>
 
-![dotted cumulative session length](https://user-images.githubusercontent.com/25012294/161422204-5823b6b3-7081-40d2-accf-e67432cc4681.png)
+![dotted cumulative session length](https://user-images.githubusercontent.com/25012294/176927346-7ff7b3c8-7a3e-47d3-b3e5-1f954f00149c.png)
 <br>
 <br>
 
@@ -87,7 +94,7 @@ data %>%
     cumulative_avg_session_length = max(cumulative_avg_session_length),
     cumulative_session_length_ci_upper = max(cumulative_avg_session_length) + 1.39 * (sqrt(max(cumulative_session_length_squared_errors) / max(cumulative_obs)) / sqrt(max(cumulative_obs)))
   ) %>%
-  filter(date != '2018-07-21') %>%
+  filter(date != "2018-07-21") %>%
   ggplot(
     aes(
       date,
@@ -113,21 +120,28 @@ data %>%
     ),
     size = 5
   ) +
-  xlab('Session Start Date') +
-  ylab('Session Length (Min.)') +
-  ggtitle('Cumulative Mean Session Length: 83.4% Confidence Intervals') +
+  xlab("Session Start Date") +
+  ylab("Session Length (Min.)") +
+  ggtitle("Cumulative Mean Session Length: 83.4% Confidence Intervals") +
   viridis::scale_color_viridis(
-    option = 'D',
+    option = "D",
     discrete = TRUE,
     begin = 0,
     end = 0.6
   ) +
   theme(
-    panel.background = element_rect(fill = 'grey94'),
-    text = element_text(family = 'Segoe UI')
+    panel.background = element_rect(fill = 'grey97'),
+    text = element_text(family = 'Segoe UI'),
+    plot.title = element_text(size = 9),
+    axis.title.x = element_text(size = 9),
+    axis.title.y = element_text(size = 9),
+    axis.text.x = element_text(size = 8),
+    axis.text.y = element_text(size = 8),
+    legend.title = element_text(size = 9),
+    legend.text = element_text(size = 9)
   )
 ```
-![cumulative session length white](https://user-images.githubusercontent.com/25012294/161945105-4be1b5a4-0d6c-4667-be8b-16a838ca43ea.png)
+![cumulative confidence intervals white](https://user-images.githubusercontent.com/25012294/176927847-4b8966bb-fe8b-4f7b-b679-2326ac685790.png)
 <br>
 <br>
 
