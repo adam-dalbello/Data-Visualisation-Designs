@@ -142,6 +142,7 @@ data %>%
   )
 ```
 <br>
+
 ![cumulative confidence intervals white](https://user-images.githubusercontent.com/25012294/176927847-4b8966bb-fe8b-4f7b-b679-2326ac685790.png)
 <br>
 <br>
@@ -196,6 +197,7 @@ data %>%
   )
 ```
 <br>
+
 ![retention rate](https://user-images.githubusercontent.com/25012294/176928347-94822bbb-ae70-4c4f-958a-4193982445b1.png)
 <br>
 <br>
@@ -248,5 +250,6 @@ data %>%
   )
 ```
 <br>
+
 ![cumulative lifetime revenue](https://user-images.githubusercontent.com/25012294/176928486-28daa8e0-124d-4f1f-a8cd-8c6559007c1c.png)
 
