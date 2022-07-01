@@ -143,7 +143,7 @@ data %>%
 ```
 <br>
 
-![cumulative confidence intervals white](https://user-images.githubusercontent.com/25012294/176927847-4b8966bb-fe8b-4f7b-b679-2326ac685790.png)
+![Uploading cumulative confidence intervals white.png…]()
 <br>
 <br>
 
