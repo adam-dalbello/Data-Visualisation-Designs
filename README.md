@@ -143,7 +143,7 @@ data %>%
 ```
 <br>
 
-![cumulative confidence intervals white](https://user-images.githubusercontent.com/25012294/176929639-18d6acec-e127-4204-89b3-cc1d04b2f0b3.png)
+![Rplotcumulative confidence intervals white](https://user-images.githubusercontent.com/25012294/176930093-cf2c5465-9bad-41f6-8dbe-fa9ff1ae9df1.png)
 <br>
 <br>
 
