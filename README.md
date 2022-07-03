@@ -215,11 +215,11 @@ data %>%
   mutate(
     life_time_revenue = cumsum(total_daily_deposits),
     activity_date = if_else(
-                            yearmon_fd == as.yearmon(activity_date),
-                                                                    as.Date(yearmon_fd + 0.1),
-                                                                                              as.Date(activity_date)
+      yearmon_fd == as.yearmon(activity_date),
+      as.Date(yearmon_fd + 0.1),
+      as.Date(activity_date)
                     )
-    ) %>% 
+  ) %>% 
   ggplot(
     aes(
       activity_date,
@@ -246,7 +246,6 @@ data %>%
     axis.title.x = element_blank(),
     axis.title.y = element_blank(),
     legend.position = "none"
-  )
   )
 ```
 <br>
